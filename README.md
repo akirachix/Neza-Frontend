@@ -38,5 +38,5 @@ To run this Next project locally, please follow these steps:
 - Run the development server:
 ```
   npm run dev
-``
+```
   
