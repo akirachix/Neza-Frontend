@@ -20,7 +20,7 @@
 - vscode IDE >= 1.36
   
 ### INSTALLATION
-To run this Django project locally, please follow these steps:
+To run this Next project locally, please follow these steps:
 - Clone the repository:
   "git clone https://github.com/akirachix/Neza-Frontend.git"
 - Navigate to the project directory:
