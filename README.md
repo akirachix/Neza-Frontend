@@ -39,7 +39,7 @@ To run this Next project locally, please follow these steps:
 ```
   npm run dev
 ```
-runs on port:
+- Runs on port:
 ```
 http://localhost:3000 
 ```
