@@ -10,8 +10,8 @@
 - [Installation](#installation)
 - [Contacts](#contacts)
 ### Built With
-Next.js
-On Ubuntu 20.4
+- Next.js
+- On Ubuntu 20.4
 
 
 ### Prerequisites
