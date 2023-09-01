@@ -1,17 +1,36 @@
-# Projects Template
 # TinyLife_wellness-Web-Portal
 <a name="readme-top"></a>
 <h3 align="center">TinyLife wellness Web portal</h3>
   <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
+  This README provides a brief explanation of what the web portal provides for its users, a guide on how to run the web portal, test the different features, as well as contact information for the development team.
+  
+## Table of Contents
+- [Built With](#built-with)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Contacts](#contacts)
+### Built With
+Next.js
+On Ubuntu 20.4
 
-## ABOUT
-Welcome to our TinyLife Wellness web portal!  This website provides an interactive user interface for organisations to use predictive machine learning model that uses historical data on lead poisoning cases in Kenya as well as other countries to predict Kenyan areas at high risk of exposing pregnant women and children to lead poisoning.
 
-### BUILT WITH
-Next js
-## USAGE
-open the website  at http://127.0.0.1/5000 for the demo
-## CONTACTS
+### Prerequisites
+- node (Version >=18)
+- npm (Version >=8)
+- vscode IDE >= 1.36
+  
+### INSTALLATION
+To run this Django project locally, please follow these steps:
+- Clone the repository:
+  "git clone https://github.com/akirachix/Neza-Frontend.git"
+- Navigate to the project directory:
+  "cd Neza-Frontend"
+- Install requirements:
+  "npm install"
+- Run the development server:
+  "npm run dev"
+  
+## Contacts
 Joyeuse Kabanyana - [@Linkedin](https://www.linkedin.com/in/joyeuse-kabanyana) - joyeusekabanyana@gmail.com
 <br>
 Esther Mwangi - [@Linkedin](https://www.linkedin.com/in/esther-mwangi-/) - mwangiestherwambuii@gmail.com
