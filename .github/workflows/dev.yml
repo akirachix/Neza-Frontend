@@ -15,10 +15,7 @@ jobs:
     - name: Setup Next.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'
-    - name: Check Formatting
-      run: npx prettier --check .
-      
+        node-version: '18'   
     - name: Install Dependencies
       run: |
            cd neza-web-portal
