@@ -3,13 +3,9 @@ on:
   push:
     branches:
       -main
-      -dev
-      -staging
   pull_request:
     branches:
       -main
-      -dev
-      -staging
 jobs:
   build:
     runs-on: ubuntu-20.04
