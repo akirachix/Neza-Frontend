@@ -2,10 +2,10 @@ name: Next.js CI/CD
 on:
   push:
     branches:
-      -staging
+      - staging
   pull_request:
     branches:
-      -staging
+      - staging
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -15,7 +15,7 @@ jobs:
     - name: Setup Next.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18' 
+        node-version: '18'
     - name: Install Packages
       run: npm install
     - name: Check Formatting
@@ -34,7 +34,3 @@ jobs:
       run: |
            cd neza-web-portal
            npm test
-
-
-
-
