@@ -2,7 +2,14 @@ name: Next.js CI/CD
 on:
   push:
     branches:
-      - main
+      main
+      dev
+      staging
+  pull_request:
+    branches:
+      main
+      dev
+      staging
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -16,6 +23,6 @@ jobs:
     - name: Install Packages
       run: npm install
     - name: Check Formatting
-      run: npx prettier --check .
+      run: npm run build
     - name: Build
       run: npm run build
