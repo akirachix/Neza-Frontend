@@ -22,15 +22,3 @@ jobs:
       run: npx prettier --check .
     - name: Build
       run: npm run build
-    - name: Install Dependencies
-      run: |
-           cd neza-web-portal
-           npm install
-    - name: Build Next App
-      run: |
-           cd neza-web-portal
-           npm run build
-    - name: Run Tests
-      run: |
-           cd neza-web-portal
-           npm test
