@@ -2,10 +2,10 @@ name: Next.js CI/CD
 on:
   push:
     branches:
-      -main
+      - main
   pull_request:
     branches:
-      -main
+      - main
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -15,22 +15,22 @@ jobs:
     - name: Setup Next.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18' 
+        node-version: '18'
     - name: Install Packages
       run: npm install
     - name: Check Formatting
       run: npx prettier --check .
     - name: Build
       run: npm run build
-   - name: Install Dependencies
+    - name: Install Dependencies
       run: |
            cd neza-web-portal
            npm install
-   - name: Build Next App
+    - name: Build Next App
       run: |
            cd neza-web-portal
            npm run build
-   - name: Run Tests
+    - name: Run Tests
       run: |
            cd neza-web-portal
            npm test
