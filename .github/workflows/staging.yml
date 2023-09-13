@@ -1,29 +1,29 @@
-name: Next.js CI/CD
-on:
-  push:
-    branches:
-      - staging
-  pull_request:
-    branches:
-      - staging
-jobs:
-  build:
-    runs-on: ubuntu-20.04
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Setup Next.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
-    - name: Install Dependencies
-      run: |
-           cd neza-web-portal
-           npm install
-    - name: Build Next App
-      run: |
-           cd neza-web-portal
-           npm run build
+# name: Next.js CI/CD
+# on:
+#   push:
+#     branches:
+#       - staging
+#   pull_request:
+#     branches:
+#       - staging
+# jobs:
+#   build:
+#     runs-on: ubuntu-20.04
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
+#     - name: Setup Next.js
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: '18'
+#     - name: Install Dependencies
+#       run: |
+#            cd neza-web-portal
+#            npm install
+#     - name: Build Next App
+#       run: |
+#            cd neza-web-portal
+#            npm run build
     # - name: Run Tests
     #   run: |
     #        cd neza-web-portal
