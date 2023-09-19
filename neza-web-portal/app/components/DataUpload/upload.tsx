@@ -58,16 +58,17 @@ const DataUpload: React.FC = () => {
             setErrorMessage(`Missing columns: ${missingColumns.join(', ')}`);
           } else {
             try {
-           
+              // Simulate an upload to the server (replace with actual upload logic)
+              // Update the list of uploaded files and contents
               setUploadedFiles([...uploadedFiles, selectedFile.name]);
               setFileContents([...fileContents, csvData]);
               setErrorMessage(null);
               setSuccessMessage('File uploaded successfully.');
 
+              // Make a POST request to your API to upload the file
               const formData = new FormData();
               formData.append('file', selectedFile);
               await axios.post('/api/upload/', formData);
-
             } catch (error) {
               setErrorMessage('An error occurred while uploading the file.');
               setSuccessMessage(null);
@@ -123,8 +124,8 @@ const DataUpload: React.FC = () => {
   };
 
   return (
-    <div className="flex data-upload-container">
-      <div className=" ml-5 upload-files">
+    <div className="flex flex-col md:flex-row data-upload-container">
+      <div className="md:ml-5 upload-files md:w-1/3">
         <h2 className='font-bold text-2xl mt-10'>Uploaded Files</h2>
         <ol>
           {uploadedFiles.map((file, index) => (
@@ -146,26 +147,26 @@ const DataUpload: React.FC = () => {
               </div>
             </li>
           ))}
-
         </ol>
       </div>
-      <div className="main-content">
-        <div className="mt-10 ml-20 upload-header">
+      <div className="main-content md:w-2/3">
+        <div className="mt-10 ml-0 md:ml-20 upload-header">
           <h1 className="font-bold text-2xl">Upload Files</h1>
-          <p>Uploaded data helps us update our model and <br /> generate more accurate predictions</p>
-          <div className="button-container bg-black w-3/4 p-5 pb-10 rounded-xl mt-5 mb-9" >
+          <p>Uploaded data helps us update our model <br/> and generate more accurate predictions</p>
+          <div className="button-container bg-black w-full md:w-1/4 p-5 pb-10 rounded-xl mt-5 mb-9">
             <label htmlFor="file-input" className="file-upload-label">
               <div className="file-upload-icon cursor-pointer" style={{ fill: 'green' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
                   <path d="M24 0C11.046 0 0 11.046 0 24s11.046 24 24 24 24-11.046 24-24S36.954 0 24 0zm0 44C12.93 44 4 35.07 4 24S12.93 4 24 4s20 8.93 20 20-8.93 20-20 20zm2-26v8h-4v-8H18l6-6 6 6h-4z" />
                 </svg>
               </div>
-              <p className="text-white mt-2">Drag your CSV files here</p>
+              <p className="text-white mt-2">Drag CSV files to upload</p>
               <input
                 id="file-input"
                 type="file"
                 accept=".csv"
                 onChange={handleFileChange}
+                className="hidden" 
               />
             </label>
             <button onClick={toggleUploadedFiles} className="bg-white text-black px-2 py-2 rounded-md mt-2">
