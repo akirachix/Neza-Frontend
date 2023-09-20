@@ -1,10 +1,15 @@
+// components/DataUpload.tsx
 import React, { useState } from 'react';
 import Papa from 'papaparse';
 import UpdateFileModal from '../UpdateFileModal/update';
 
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+
 const DataUpload: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<{ name: string; timestamp: string }[]>([]);
   const [fileContents, setFileContents] = useState<string[]>([]);
   const [showUpdateModal, setShowUpdateModal] = useState<boolean>(false);
   const [updateIndex, setUpdateIndex] = useState<number | null>(null);
@@ -18,6 +23,7 @@ const DataUpload: React.FC = () => {
       setSelectedFile(file);
     }
   };
+
 
   const handleUpload = async () => {
     if (selectedFile) {
@@ -56,7 +62,8 @@ const DataUpload: React.FC = () => {
           if (missingColumns.length > 0) {
             setErrorMessage(`Missing columns: ${missingColumns.join(', ')}`);
           } else {
-            setUploadedFiles([...uploadedFiles, selectedFile.name]);
+            const timestamp = new Date().toLocaleString();
+            setUploadedFiles([...uploadedFiles, { name: selectedFile.name, timestamp }]);
             setFileContents([...fileContents, csvData]);
             setErrorMessage(null);
             setSuccessMessage('File uploaded successfully.');
@@ -68,8 +75,12 @@ const DataUpload: React.FC = () => {
     }
   };
 
+  
+
   const handleDeleteFile = (index: number) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this file? This action cannot be undone.');
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this file? This action cannot be undone.'
+    );
 
     if (confirmDelete) {
       const newUploadedFiles = [...uploadedFiles];
@@ -92,14 +103,14 @@ const DataUpload: React.FC = () => {
     setUpdateIndex(null);
   };
 
-  const handleUpdateModalUpdate = (updatedData: string) => {
+  const handleUpdateModalUpdate = (updatedData: { name: string; timestamp: string }) => {
     if (updateIndex !== null) {
       const updatedUploadedFiles = [...uploadedFiles];
       updatedUploadedFiles[updateIndex] = updatedData;
       setUploadedFiles(updatedUploadedFiles);
 
       const updatedFileContents = [...fileContents];
-      updatedFileContents[updateIndex] = updatedData;
+      updatedFileContents[updateIndex] = updatedData.name; 
       setFileContents(updatedFileContents);
     }
     setShowUpdateModal(false);
@@ -113,65 +124,81 @@ const DataUpload: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row data-upload-container">
       <div className="md:ml-5 upload-files md:w-1/3">
-        <h2 className='font-bold text-2xl mt-10'>Uploaded Files</h2>
+        <h2 className="font-bold text-2xl mt-10">Uploaded Files</h2>
         <ol>
           {uploadedFiles.map((file, index) => (
             <li key={index} className="flex items-center">
-              {file}
+              {index + 1}. {file.name} ({file.timestamp})
               <div className="icon-container ml-2">
                 <span
                   className="delete-icon text-green-500 cursor-pointer"
                   onClick={() => handleDeleteFile(index)}
                 >
-                  🗑️
+                  <DeleteIcon style={{ color: 'green' }} />
                 </span>
                 <span
                   className="update-icon text-green-500 cursor-pointer"
                   onClick={() => handleUpdateFile(index)}
                 >
-                  ✏️
+                  <EditIcon style={{ color: 'green' }} />
                 </span>
               </div>
             </li>
           ))}
         </ol>
       </div>
+
       <div className="main-content md:w-2/3">
         <div className="mt-10 ml-0 md:ml-20 upload-header">
           <h1 className="font-bold text-2xl">Upload Files</h1>
-          <p>Uploaded data helps us update our model <br/> and generate more accurate predictions</p>
-          <div className="button-container bg-black w-full md:w-1/4 p-5 pb-10 rounded-xl mt-5 mb-9">
+          <p>
+            Uploaded data helps us update our
+            <br />
+            model and generate more accurate
+            <br />
+            predictions
+          </p>
+
+          <div className="button-container bg-black w-full md:w-1/4 p-5 pb-20 rounded-xl mt-5 mb-9 flex flex-col items-center">
             <label htmlFor="file-input" className="file-upload-label">
-              <div className="pl-10 file-upload-icon cursor-pointer" style={{ fill: 'green' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-                  <path d="M24 0C11.046 0 0 11.046 0 24s11.046 24 24 24 24-11.046 24-24S36.954 0 24 0zm0 44C12.93 44 4 35.07 4 24S12.93 4 24 4s20 8.93 20 20-8.93 20-20 20zm2-26v8h-4v-8H18l6-6 6 6h-4z" />
-                </svg>
+              <div className="pl-10 file-upload-icon cursor-pointer ml-8">
+                <CloudUploadIcon style={{ fontSize: '48px', color: 'green' }} />
               </div>
-              <p className="text-white mt-2">Drag csv files to upload</p>
+              <p className="text-white mt-5">Drag csv files to upload</p>
               <input
                 id="file-input"
                 type="file"
                 accept=".csv"
                 onChange={handleFileChange}
-                className="hidden" 
+                className="hidden"
               />
             </label>
-            <button onClick={toggleUploadedFiles} className="pl-10 bg-white text-black px-2 py-2 rounded-md mt-2">
+            <button
+              onClick={toggleUploadedFiles}
+              className="pl-6 bg-white text-black px-4 py-2 rounded-md mt-10 "
+            >
               Browse Files
             </button>
           </div>
-          <button onClick={handleUpload} className="ml-6 bg-green-500 text-white px-4 py-2 rounded-md mt-2">
+
+          <button
+            onClick={handleUpload}
+            className="ml-[90px] bg-green-500 text-white px-4 py-3 rounded-md mt-2 pl-5 pr-5"
+          >
             Upload
           </button>
         </div>
+
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>}
+        {successMessage && <p className="success-message text-align-center">{successMessage}</p>}
         {showUploadedFiles && (
           <div className="uploaded-files">
             <h2>Uploaded Files</h2>
             <ol>
               {uploadedFiles.map((file, index) => (
-                <li key={index}>{file}</li>
+                <li key={index}>
+                  {index + 1}. {file.name} ({file.timestamp})
+                </li>
               ))}
             </ol>
           </div>

@@ -2,16 +2,17 @@
 import React, { useState } from 'react';
 
 interface UpdateFileModalProps {
-  fileData: string;
+  fileData: { name: string; timestamp: string };
   onClose: () => void;
-  onUpdate: (updatedData: string) => void;
+  onUpdate: (updatedData: { name: string; timestamp: string }) => void; // Pass updated data object
 }
 
 const UpdateFileModal: React.FC<UpdateFileModalProps> = ({ fileData, onClose, onUpdate }) => {
-  const [updatedData, setUpdatedData] = useState<string>(fileData);
+  const [updatedName, setUpdatedName] = useState<string>(fileData.name); // Use updatedName state
 
   const handleUpdate = () => {
-    onUpdate(updatedData);
+    const updatedTimestamp = new Date().toLocaleString(); // Get the current timestamp
+    onUpdate({ name: updatedName, timestamp: updatedTimestamp }); // Pass updated data object
     onClose();
   };
 
@@ -19,10 +20,14 @@ const UpdateFileModal: React.FC<UpdateFileModalProps> = ({ fileData, onClose, on
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center">
       <div className="bg-white p-4 shadow-md rounded-md">
         <h2>Update File</h2>
-        <textarea
-          className="w-full h-32 border rounded-md p-2"
-          value={updatedData}
-          onChange={(e) => setUpdatedData(e.target.value)}
+        <p>Original Name: {fileData.name}</p>
+        <p>Uploaded at: {fileData.timestamp}</p>
+        <label htmlFor="updated-name">Updated Name:</label>
+        <input
+          type="text"
+          id="updated-name"
+          value={updatedName}
+          onChange={(e) => setUpdatedName(e.target.value)}
         />
         <button className="bg-blue-500 text-white px-4 py-2 rounded-md" onClick={handleUpdate}>
           Update
