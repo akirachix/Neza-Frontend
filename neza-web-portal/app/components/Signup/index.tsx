@@ -28,7 +28,7 @@ function Signup() {
         />
       </div>
       <div className="mb-10 mt-10">
-        <label htmlFor="organizationEmail" className="block text-gray-700 mb-2 ml-10 font-nunito ">
+        <label htmlFor="organizationEmail" className="block text-gray-700 mb-2 ml-10 ">
           Organization Email:
         </label>
         <input
@@ -42,12 +42,12 @@ function Signup() {
       <div className='pl-40'>
       <Link href="/navbar">
       <button
-            className="ml-10 bg-green-500 text-white px-4 py-3 mt-20 rounded-[10px] w-[180px] h-[70px] rounded-md mt-2 pr-5 font-nunito bg-green">
+            className="ml-10 bg-green-500 text-white px-4 py-3 mt-20 rounded-[10px] w-[180px] h-[70px] rounded-md mt-2 pr-5 bg-neza-green-200">
             Sign Up
           </button>
       </Link>
       <Link href="./Login/login">
-      <p className='mt-10 text-black text-xl font-normal font-["Nunito"]'>Already have an account? <span className='text-green-400'>Sign In</span></p>
+      <p className='mt-10 text-black text-xl font-normal font-["Nunito"]'>Already have an account? <span className='text-neza-green-400'>Sign In</span></p>
       </Link>  
       </div>
     </form>

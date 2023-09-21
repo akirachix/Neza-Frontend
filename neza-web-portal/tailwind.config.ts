@@ -14,7 +14,14 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       Color: {
-        'green': '#2CCD1F',
+
+        'neza':{
+          'green': {
+            400:'#10430C',
+            200:'#2CCD1F'
+          },
+        }
+  
       },   
       fontSize: {
         'xs': '0.75rem',
