@@ -17,8 +17,8 @@ const config: Config = {
 
         'neza':{
           'green': {
-            400:'#10430C',
-            200:'#2CCD1F'
+            200:'#2CCD1F',
+            400:'#10430C'
           },
         }
   

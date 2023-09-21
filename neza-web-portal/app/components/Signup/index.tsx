@@ -13,10 +13,10 @@ function Signup() {
       className=''/>
       <div className='flex gap-x-20 '>
         <div>
-    <div className="text-black text-[43px] ml-20 pl-[150px] font-['Nunito']">Sign Up </div>
-    <form className='mt-10 ml-2 w-max text-[20px] font-["Nunito"]'>
+    <div className="text-black text-[43px] ml-20 pl-[150px]">Sign Up </div>
+    <form className='mt-10 ml-2 w-max text-[20px] '>
       <div className="mb-4">
-        <label htmlFor="organizationName" className="block text-gray-700 mb-2 ml-10 font-nunito">
+        <label htmlFor="organizationName" className="block text-gray-700 mb-2 ml-10">
           Organization Name:
         </label>
         <input
@@ -47,7 +47,7 @@ function Signup() {
           </button>
       </Link>
       <Link href="./Login/login">
-      <p className='mt-10 text-black text-xl font-normal font-["Nunito"]'>Already have an account? <span className='text-neza-green-400'>Sign In</span></p>
+      <p className='mt-10 text-black text-xl'>Already have an account? <span className='text-neza-green-400'>Sign In</span></p>
       </Link>  
       </div>
     </form>
