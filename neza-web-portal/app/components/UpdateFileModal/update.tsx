@@ -4,15 +4,15 @@ import React, { useState } from 'react';
 interface UpdateFileModalProps {
   fileData: { name: string; timestamp: string };
   onClose: () => void;
-  onUpdate: (updatedData: { name: string; timestamp: string }) => void; // Pass updated data object
+  onUpdate: (updatedData: { name: string; timestamp: string }) => void;
 }
 
 const UpdateFileModal: React.FC<UpdateFileModalProps> = ({ fileData, onClose, onUpdate }) => {
-  const [updatedName, setUpdatedName] = useState<string>(fileData.name); // Use updatedName state
+  const [updatedName, setUpdatedName] = useState<string>(fileData.name); 
 
   const handleUpdate = () => {
-    const updatedTimestamp = new Date().toLocaleString(); // Get the current timestamp
-    onUpdate({ name: updatedName, timestamp: updatedTimestamp }); // Pass updated data object
+    const updatedTimestamp = new Date().toLocaleString(); 
+    onUpdate({ name: updatedName, timestamp: updatedTimestamp });
     onClose();
   };
 
