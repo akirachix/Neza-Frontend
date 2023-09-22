@@ -92,14 +92,11 @@ const SideBar = () => {
                 onMouseEnter={() => handleMouseEnter({ id, label, link, icon })}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="mr-5">{React.cloneElement(icon, {style: {
-                      width: "22px",
-                      height: "23px",
-                      fontWeight: "bold",
-                      flexShrink: 0,
-                    },
-                  })}
-                </div>
+                <div className="mr-5"> {React.cloneElement(icon, {
+    className: "w-22 h-23 font-bold flex-shrink-0",
+  })}
+</div>
+
                 {!toggleCollapse && (
                   <span className="text-white text-lg font-semibold">{label}</span>
                 )}
