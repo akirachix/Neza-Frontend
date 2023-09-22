@@ -13,13 +13,19 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      Color: {
+      color: {
 
         'neza':{
           'green': {
             200:'#2CCD1F',
-            400:'#10430C'
+            400:'#10430C',
           },
+          'black': {
+            200: '#00000'
+          },
+          'grey': {
+            200: '#3A3A40',
+          },         
         }
   
       },   

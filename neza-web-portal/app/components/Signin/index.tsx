@@ -13,7 +13,7 @@ function Signup() {
       className=''/>
       <div className='flex gap-x-20 '>
         <div>
-    <div className="text-neza-black ml-20 pl-[150px]">Sign Up </div>
+    <div className="text-[43px] text-neza-black ml-20 pl-[150px]">Sign In </div>
     <form className='mt-10 ml-2 w-max text-[20px] '>
       <div className="mb-4">
         <label htmlFor="organizationName" className="block text-neza-grey mb-2 ml-10">
@@ -29,13 +29,13 @@ function Signup() {
       </div>
       <div className="mb-10 mt-10">
         <label htmlFor="organizationEmail" className="block text-neza-grey mb-2 ml-10 ">
-          Organization Email:
+          Enter Password:
         </label>
         <input
           type="email"
           id="organizationEmail"
           name="organizationEmail"
-          className= "w-[583px] h-[87px] rounded-[10px] border-2 border-neza-green-400 border-opacity-30"
+          className= "w-[583px] h-[87px] rounded-[10px] border-2 border-green-400 border-opacity-30"
           required
         />
       </div>
@@ -43,11 +43,11 @@ function Signup() {
       <Link href="#">
       <button
             className="ml-10 bg-green-500 text-white px-4 py-3 mt-20 rounded-[10px] w-[180px] h-[70px] rounded-md mt-2 pr-5 bg-neza-green-200">
-            Sign Up
+            Sign In
           </button>
       </Link>
       <Link href="#">
-      <p className='mt-10 text-black text-xl'>Already have an account? <span className='text-neza-green-400'>Sign In</span></p>
+      <p className='mt-10 text-black text-xl'>Don't have an account? <span className='text-neza-green-400'>Sign up</span></p>
       </Link>  
       </div>
     </form>
