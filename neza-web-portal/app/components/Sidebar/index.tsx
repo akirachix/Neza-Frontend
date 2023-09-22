@@ -93,34 +93,6 @@ const SideBar = () => {
         </div>
         <div className="flex flex-col items-start mt-10 text-white font-nunito">
 
-
-
-
-
-        {/* {menuItems.map(({ id, label, link, icon }) => (
-  <Link key={id} href={link}>
-    <div
-      className={`flex items-center cursor-pointer rounded w-full overflow-hidden whitespace-nowrap my-1 p-3 mt-9 transition duration-300 ${
-        activeMenuItem && activeMenuItem.id === id ? "text-yellow-500" : ""
-      } ${toggleCollapse ? "justify-center mr-2" : ""}`}
-      onMouseEnter={() => setActiveMenuItem({ id, label, link, icon })}
-      onMouseLeave={() => setActiveMenuItem(null)}
-    >
-      <div className="mr-5">
-        {React.cloneElement(icon, {
-          className: "w-22 h-23 font-bold flex-shrink-0",
-        })}
-      </div>
-
-      {!toggleCollapse && (
-        <span className="text-white text-lg font-semibold">
-          {label}
-        </span>
-      )}
-    </div>
-  </Link>
-))} */}
-
           {menuItems.map(({ id, label, link, icon }) => (
             <Link key={id} href={link}>
               <div
