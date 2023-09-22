@@ -16,6 +16,24 @@ const config: Config = {
       backgroundColor: {
         'custom-green': '#2CCD1F', 
       },
+      Color: {
+
+        'neza':{
+          'green': {
+            200:'#2CCD1F',
+            400:'#10430C'
+          },
+        }
+  
+      },   
+      fontSize: {
+        'xs': '0.75rem',
+        'sm': '0.875rem',
+        'base': '1rem',      
+        'lg': '1.125rem',
+        'xl': '1.25rem', 
+        '2xl': '1.5rem', 
+      },                  
     },
   },
   plugins: [],
