@@ -77,7 +77,7 @@ const SideBar = () => {
       <div className="flex flex-col pl-3">
         <div className="flex items-center justify-between relative">
           <div className="flex items-center pl-1 gap-4 flex-col">
-            <img src="/LOGO.png" alt="Logo" width={toggleCollapse ? 45 : 90} height={toggleCollapse ? 28 : 56} className={logoClasses} />
+            <img src="/images/LOGO.png" alt="Logo" width={toggleCollapse ? 45 : 90} height={toggleCollapse ? 28 : 56} className={logoClasses} />
             {!toggleCollapse && <div className="w-4" />}
           </div>
           <button className={collapseIconClasses} onClick={handleSideBarToggle}>
