@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { CgMenu } from "react-icons/cg";
 import { RxDashboard, RxExit, RxPerson, RxPieChart } from "react-icons/rx";
 import Link from "next/link";
+import { link } from "fs/promises";
 
 
 type MenuItem = {
@@ -17,9 +18,9 @@ type MenuItem = {
 
 const SideBar = () => {
   const menuItems: MenuItem[] = [
-    { id: 1, label: "Dashboard", link: "/", icon: <RxDashboard /> },
+    { id: 1, label: "Dashboard", link: "/Signup", icon: <RxDashboard /> },
     { id: 2, label: "Data Management", link: "/datamanagement", icon: <RxPieChart /> },
-    { id: 3, label: "Profile", link: "/profile", icon: <RxPerson /> },
+    { id: 3, label: "Profile", link: '/profile', icon: <RxPerson /> },
     { id: 4, label: "SignOut", link: "/popup", icon: <RxExit /> },
   ];
 
@@ -77,7 +78,13 @@ const SideBar = () => {
       <div className="flex flex-col pl-3">
         <div className="flex items-center justify-between relative">
           <div className="flex items-center pl-1 gap-4 flex-col">
-            <img src="/images/LOGO.png" alt="Logo" width={toggleCollapse ? 45 : 90} height={toggleCollapse ? 28 : 56} className={logoClasses} />
+            <img
+              src="/images/LOGO.png"
+              alt="Logo"
+              width={toggleCollapse ? 45 : 90}
+              height={toggleCollapse ? 28 : 56}
+              className={logoClasses}
+            />
             {!toggleCollapse && <div className="w-4" />}
           </div>
           <button className={collapseIconClasses} onClick={handleSideBarToggle}>
@@ -85,6 +92,7 @@ const SideBar = () => {
           </button>
         </div>
         <div className="flex flex-col items-start mt-10 text-white font-nunito">
+
           {menuItems.map(({ id, label, link, icon }) => (
             <Link key={id} href={link}>
               <div
@@ -92,21 +100,21 @@ const SideBar = () => {
                 onMouseEnter={() => handleMouseEnter({ id, label, link, icon })}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="mr-5"> {React.cloneElement(icon, {
-    className: "w-22 h-23 font-bold flex-shrink-0",
-  })}
-</div>
+                <div className="mr-5">
+                  {React.cloneElement(icon, {
+                    className: "w-22 h-23 font-bold flex-shrink-0",
+                  })}
+                </div>
 
                 {!toggleCollapse && (
-                  <span className="text-white text-lg font-semibold">{label}</span>
+                  <span className="text-white text-lg font-semibold">
+                    {label}
+                  </span>
                 )}
               </div>
             </Link>
-         
           ))}
         </div>
-
-
       </div>
     </div>
   );

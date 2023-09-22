@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import SideBar from './components/Sidebar'
-import Signup from './components/Signup'
+import Profile from './profile/page'
 
 export default function Home() {
   return (
-   <div>
-    {/* <Signup/> */}
-    <SideBar/>
-   </div>
+    <div>
+      <Profile/>
+    </div>
+    
   )
 }

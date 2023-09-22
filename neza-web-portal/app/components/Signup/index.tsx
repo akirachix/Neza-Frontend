@@ -40,7 +40,7 @@ function Signup() {
         />
       </div>
       <div className='pl-40'>
-      <Link href="/navbar">
+      <Link href="">
       <button
             className="ml-10 bg-green-500 text-white px-4 py-3 mt-20 rounded-[10px] w-[180px] h-[70px] rounded-md mt-2 pr-5 bg-neza-green-200">
             Sign Up
