@@ -1,7 +1,7 @@
 // components/DataUpload.tsx
 import React, { useState } from 'react';
 import Papa from 'papaparse';
-import UpdateFileModal from '../UpdateFileModal/update';
+import UpdateFileModal from '../UpdateFileModal';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -22,19 +22,16 @@ const DataUpload: React.FC = () => {
     if (file) {
       setSelectedFile(file);
 
-      // Add the selected file to the list first
       const timestamp = new Date().toLocaleString();
       setUploadedFiles([{ name: file.name, timestamp }, ...uploadedFiles]);
-      setFileContents(['', ...fileContents]); // Add a placeholder for now
+      setFileContents(['', ...fileContents]);
 
-      // Reset error and success messages
       setErrorMessage(null);
       setSuccessMessage(null);
     }
   };
 
   const handleUploadButtonClick = () => {
-    // Trigger a click event on the hidden file input
     const fileInput = document.getElementById('file-input');
     if (fileInput) {
       fileInput.click();
@@ -44,7 +41,6 @@ const DataUpload: React.FC = () => {
   const handleUpload = async () => {
     if (selectedFile) {
       if (!selectedFile.name.endsWith('.csv')) {
-        // If the file doesn't have the .csv extension, remove it from the list
         removeFileFromList(selectedFile.name);
         setErrorMessage('Only CSV files are allowed.');
         return;
@@ -56,7 +52,6 @@ const DataUpload: React.FC = () => {
           const csvData = e.target.result.toString();
 
           if (fileContents.includes(csvData)) {
-            // If a file with the same content already exists, remove it from the list
             removeFileFromList(selectedFile.name);
             setErrorMessage('File with the same content already exists.');
             return;
@@ -80,11 +75,10 @@ const DataUpload: React.FC = () => {
           );
 
           if (missingColumns.length > 0) {
-            // If the file is missing required columns, remove it from the list
             removeFileFromList(selectedFile.name);
             setErrorMessage(`Missing columns: ${missingColumns.join(', ')}`);
+
           } else {
-            // Replace the placeholder with the actual CSV data
             const newFileContents = [...fileContents];
             newFileContents[0] = csvData;
             setFileContents(newFileContents);
@@ -111,15 +105,8 @@ const DataUpload: React.FC = () => {
       setFileContents(newFileContents);
     }
   };
-
   const handleDeleteFile = (index: number) => {
-    const confirmDelete = window.confirm(
-      'Are you sure you want to delete this file? This action cannot be undone.'
-    );
-
-    if (confirmDelete) {
-      removeFileFromList(uploadedFiles[index].name);
-    }
+    removeFileFromList(uploadedFiles[index].name);
   };
 
   const handleUpdateFile = (index: number) => {
@@ -153,7 +140,7 @@ const DataUpload: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row data-upload-container">
       <div className="md-5 upload-files md:w-1/3">
-        <h2 className="font-bold text-2xl mt-11">Uploaded Files</h2>
+        <h2 className="font-bold text-2xl mt-11">Selected Files</h2>
         <ol>
           {uploadedFiles.map((file, index) => (
             <li key={index} className="flex items-center">
@@ -203,7 +190,7 @@ const DataUpload: React.FC = () => {
                 />
               </label>
               <button
-                onClick={handleUploadButtonClick} // Trigger file input click when this button is clicked
+                onClick={handleUploadButtonClick} 
                 className="w-40 h-14 bg-white text-black border-2 border-green-500 rounded-lg mt-10 pl-2"
               >
                 Upload Files
@@ -212,13 +199,7 @@ const DataUpload: React.FC = () => {
           </div>
           <button
             onClick={handleUpload}
-            className="ml-[119px] bg-green-500 text-white px-4 py-3 rounded-md mt-2 pr-5 font-nunito"
-            style={{
-              width: '150px',
-              height: '50px',
-              borderRadius: '10px',
-              background: '#2DCD1F',
-            }}
+            className="ml-[119px] w-[150px] h-[50px] text-white px-4 py-3 rounded-md mt-2 pr-5 font-nunito bg-neza-green-200 bg-[#2DCD1F]"
           >
             Done
           </button>

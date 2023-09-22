@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import DataUpload from './components/DataUpload/upload';
+import DataUpload from './components/DataUpload';
 
 const Home: React.FC = () => {
   return (
