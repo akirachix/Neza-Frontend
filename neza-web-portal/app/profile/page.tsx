@@ -31,7 +31,7 @@ const Profile = () => {
     alert('Details updated successfully');
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = e.target;
     setFormData({
       ...formData,
@@ -39,7 +39,7 @@ const Profile = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert('Your details have been updated successfully');
   };
@@ -105,7 +105,6 @@ const Profile = () => {
 
   return (
     <div className="flex bg-white mt-[-53.5%]">
-      {/* <SideBar /> */}
       <div className="m-auto">
         <h1 className="text-2xl font-semibold mt-4 pl-10 text-black text-center">My Account</h1>
         <div className="max-w-md mx-auto justify-items-center">
