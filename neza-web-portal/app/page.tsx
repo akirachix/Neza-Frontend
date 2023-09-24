@@ -1,11 +1,14 @@
 import Image from 'next/image'
 // import Signup from './components/Signup'
-import Signup from './components/Signin'
+import SideBar from './components/Sidebar'
+import Signup from './components/Signup'
+import Dashboard from './components/dashboard/page'
 
 export default function Home() {
   return (
-    <div>
-      <Signup/>
-    </div>
+   <div>
+    {/* <Signup/> */}
+    <Dashboard/>
+   </div>
   )
 }
