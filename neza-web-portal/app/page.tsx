@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 
-import SideBar from './components/Sidebar'
+import SideBar from './Sidebar/page'
 
 
 
