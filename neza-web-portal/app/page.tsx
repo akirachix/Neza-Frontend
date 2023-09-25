@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
   {/* <LogoutPopup onClose={undefined}/> */}
-  <SideBar/>
+  {/* <SideBar/> */}
 
     
 

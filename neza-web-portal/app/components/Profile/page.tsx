@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
-import SideBar from '../Sidebar/page';
+
 
 //use client
 const Profile = () => {
