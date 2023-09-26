@@ -1,4 +1,5 @@
 import React from 'react';
+import { WarningRounded } from '@mui/icons-material'; 
 
 interface MissingColumnsModalProps {
   isOpen: boolean;
@@ -14,7 +15,9 @@ const MissingColumnsModal: React.FC<MissingColumnsModalProps> = ({ isOpen, missi
           <div className="bg-white shadow-md rounded-md border-gray-500 ml-10 w-1/4 h-1/2 flex flex-col justify-center items-center" style={{
             boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.3)'
           }}>
-            <h2 className="font-bold text-2xl text-green-500">Missing Columns</h2>
+            <WarningRounded style={{ color: 'yellow', fontSize: '4rem', marginBottom: '0.5rem' }} />
+
+            <h2 className="font-bold text-2xl text-yellow-400">Missing Columns</h2>
             <ul>
               {missingColumns.map((column, idx) => (
                 <li key={idx}>

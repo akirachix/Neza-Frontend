@@ -1,21 +1,21 @@
 'use client';
 import React, { useState } from 'react';
 import Papa from 'papaparse';
-import MissingColumnsModal from '../MissingColumnsModal';
-import UpdateFileModal from '../UpdateFileModal';
-import SideBar from '../Sidebar/page';
+import MissingColumnsModal from '../components/MissingColumnsModal';
+import UpdateFileModal from '../components/UpdateFileModal';
+import SideBar from '../sidebar';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 const DataUpload: React.FC = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File>();
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string; timestamp: string }[]>([]);
   const [fileContents, setFileContents] = useState<string[]>([]);
   const [showUpdateModal, setShowUpdateModal] = useState<boolean>(false);
-  const [updateIndex, setUpdateIndex] = useState<number | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [updateIndex, setUpdateIndex] = useState<number>(-1);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>('');
   const [showUploadedFiles, setShowUploadedFiles] = useState<boolean>(false);
   const [showMissingColumnsModal, setShowMissingColumnsModal] = useState<boolean>(false); 
   const [missingColumns, setMissingColumns] = useState<string[]>([]); 
@@ -29,8 +29,8 @@ const DataUpload: React.FC = () => {
       setUploadedFiles([{ name: file.name, timestamp }, ...uploadedFiles]);
       setFileContents(['', ...fileContents]);
 
-      setErrorMessage(null);
-      setSuccessMessage(null);
+      setErrorMessage('');
+      setSuccessMessage('');
     }
   };
 
@@ -87,7 +87,7 @@ const DataUpload: React.FC = () => {
             newFileContents[0] = csvData;
             setFileContents(newFileContents);
 
-            setErrorMessage(null);
+            setErrorMessage('');
             setSuccessMessage('File uploaded successfully.');
           }
         }
@@ -121,7 +121,7 @@ const DataUpload: React.FC = () => {
 
   const handleUpdateModalClose = () => {
     setShowUpdateModal(false);
-    setUpdateIndex(null);
+    setUpdateIndex(-1);
   };
 
   const handleUpdateModalUpdate = (updatedData: { name: string; timestamp: string }) => {
@@ -135,7 +135,7 @@ const DataUpload: React.FC = () => {
       setFileContents(updatedFileContents);
     }
     setShowUpdateModal(false);
-    setUpdateIndex(null);
+    setUpdateIndex(-1);
   };
 
   const toggleUploadedFiles = () => {
