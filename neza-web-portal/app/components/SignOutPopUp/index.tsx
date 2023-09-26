@@ -19,6 +19,7 @@ const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onLogout }) 
             Sign Out
           </button>
         </div>
+        
       </div>
     </div>
   );
