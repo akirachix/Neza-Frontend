@@ -1,11 +1,18 @@
 import Image from 'next/image'
-import SideBar from './components/Sidebar'
-import Profile from './profile/page'
+
+
+import SideBar from './Sidebar/page'
+
+
 
 export default function Home() {
   return (
     <div>
-      <Profile/>
+  {/* <LogoutPopup onClose={undefined}/> */}
+  {/* <SideBar/> */}
+
+    
+
     </div>
     
   )

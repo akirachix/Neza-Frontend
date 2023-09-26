@@ -1,13 +1,11 @@
-
 'use client';
 import React, { useState } from "react";
-import { Nunito } from 'next/font/google'
-import classNames from "classnames";
 import { CgMenu } from "react-icons/cg";
 import { RxDashboard, RxExit, RxPerson, RxPieChart } from "react-icons/rx";
 import Link from "next/link";
-import { link } from "fs/promises";
-
+import classNames from "classnames";
+import LogoutModal from "../components/SignOutPopUp";
+import Profile from "../profile/page";
 
 type MenuItem = {
   id: number;
@@ -18,14 +16,14 @@ type MenuItem = {
 
 const SideBar = () => {
   const menuItems: MenuItem[] = [
-    { id: 1, label: "Dashboard", link: "/Signup", icon: <RxDashboard /> },
+    { id: 1, label: "Dashboard", link: "/", icon: <RxDashboard /> },
     { id: 2, label: "Data Management", link: "/datamanagement", icon: <RxPieChart /> },
-    { id: 3, label: "Profile", link: '/profile', icon: <RxPerson /> },
-    { id: 4, label: "SignOut", link: "/popup", icon: <RxExit /> },
+    { id: 3, label: "Profile", link: "/profile", icon: <RxPerson /> },
   ];
 
   const [toggleCollapse, setToggleCollapse] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState<MenuItem | null>(null);
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
   const handleSideBarToggle = () => {
     setToggleCollapse(!toggleCollapse);
@@ -53,6 +51,25 @@ const SideBar = () => {
     setActiveMenuItem(null);
   };
 
+  const handleLogoutConfirmation = async () => {
+    try {
+      const response = await fetch("https://nezabackend-2a2e9782ab7f.herokuapp.com/api/logout/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        window.location.href = "/signup";
+      } else {
+        console.error("Sign-out request failed");
+      }
+    } catch (error) {
+      console.error("Sign-out request failed", error);
+    }
+  };
+
   const sidebarClasses = classNames("h-screen px-4 pt-8 pb-4 bg-green-800 flex flex-col justify-between transition-all duration-300", {
     "w-80": !toggleCollapse,
     "w-20": toggleCollapse,
@@ -63,15 +80,21 @@ const SideBar = () => {
     "mt-10": !toggleCollapse,
     "mx-auto": toggleCollapse,
     "mt-20": toggleCollapse,
-    "mb-33": toggleCollapse,
+    "mb-13": toggleCollapse,
     "ml-2": toggleCollapse,
   });
 
   const collapseIconClasses = classNames("p-4 rounded bg-blue absolute right-0 transition-all duration-300 mb-4", {
     "rotate-180": toggleCollapse,
     "mr-3.5": toggleCollapse,
-    "mb-10": toggleCollapse,
+    "mb-1": toggleCollapse,
   });
+
+  const exitIconClasses = classNames("text-white text-xl hover:text-yellow-500 ", {
+    "ml-[-15px]": toggleCollapse,
+  });
+
+  const logoutTextClasses = "text-white text-lg font-semibold ";
 
   return (
     <div className={sidebarClasses}>
@@ -91,8 +114,7 @@ const SideBar = () => {
             <CgMenu className="text-white text-2xl mt-2 ml-1" />
           </button>
         </div>
-        <div className="flex flex-col items-start mt-10 text-white font-nunito">
-
+        <div className="flex flex-col items-start mt-10 text-white font-nunito ">
           {menuItems.map(({ id, label, link, icon }) => (
             <Link key={id} href={link}>
               <div
@@ -102,20 +124,44 @@ const SideBar = () => {
               >
                 <div className="mr-5">
                   {React.cloneElement(icon, {
-                    className: "w-22 h-23 font-bold flex-shrink-0",
+                    style: {
+                      width: "22px",
+                      height: "23px",
+                      fontWeight: "bold",
+                      flexShrink: 0,
+                    },
                   })}
                 </div>
-
-                {!toggleCollapse && (
-                  <span className="text-white text-lg font-semibold">
-                    {label}
-                  </span>
-                )}
+                {!toggleCollapse && <span className="text-white text-lg font-semibold">{label}</span>}
               </div>
             </Link>
           ))}
+          <div
+            className={getNavItemClasses({ id: 4, label: "Log Out", link: "/logOut", icon: <RxExit /> })}
+            onMouseLeave={handleMouseLeave}
+            onClick={() => setShowLogoutPopup(true)}
+          >
+            <div className="ml-[-8px] mt-[-8px]">
+              <div
+                className={`group flex items-center text-ml gap-5 font-medium p-2 hover:bg-hoverblue rounded-md mt-1 font-nunito `}
+                onClick={handleLogoutConfirmation}
+              >
+                <span className={exitIconClasses}>
+                  <RxExit />
+                </span>
+                {!toggleCollapse && <h2 className={logoutTextClasses}>Log Out</h2>}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      {showLogoutPopup && (
+        <LogoutModal
+          isOpen={showLogoutPopup}
+          onClose={() => setShowLogoutPopup(false)}
+          onLogout={handleLogoutConfirmation}
+        />
+      )}
     </div>
   );
 };
