@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "app/signout/index.ts",
     "app/signout/index.js"
-, "app/components/SignOutPopUp/index.jsx"  ],
+, "app/components/SignOutPopUp/index.tsx"  ],
   
   "exclude": ["node_modules"]
 }

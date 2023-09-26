@@ -1,9 +1,14 @@
-'use client';
 import React from "react";
 
-const LogoutModal = ({ isOpen, onClose, onLogout }) => {
+type LogoutModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onLogout: () => void;
+};
+
+const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onLogout }) => {
   return (
-    <div className={` bg-opacity-50 bg-gray-500 fixed inset-0 flex items-center justify-center z-50 ${isOpen ? "" : "hidden"}`}>
+    <div className={` bg-opacity-50 ... ... bg-gray-500 fixed inset-0 flex items-center justify-center z-50 ${isOpen ? "" : "hidden"}`}>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black p-8 pt-20 pb-20 pl-10 rounded-lg w-66 h-250 flex flex-col items-center justify-center bg-opacity-80 backdrop-blur-50">
         <h2 className="text-2xl font-nunito mb-4 text-white">Are you sure you   <br/> want to logout?</h2>
         <div className="flex gap-4">
@@ -20,4 +25,3 @@ const LogoutModal = ({ isOpen, onClose, onLogout }) => {
 };
 
 export default LogoutModal;
-
