@@ -12,7 +12,15 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+<<<<<<< HEAD
       color: {
+=======
+      backgroundColor: {
+        'custom-green': '#2CCD1F', 
+      },
+      Color: {
+
+>>>>>>> ad5a45e7c5f858e6984430af6bd21d9e6281b52a
         'neza':{
           'green': {
             200:'#2CCD1F',
