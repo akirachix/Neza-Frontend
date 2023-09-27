@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 
-
-//use client
 const Profile = () => {
   const initialFormData = {
     organizationName: 'Bwiza',
@@ -104,9 +102,9 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex bg-white ">
-      <div className="m-auto">
-        <h1 className="text-2xl font-semibold mt-4 pl-10 text-black text-center">My Account</h1>
+    <div className="flex bg-white">
+      <div className="m-auto ml-[40%]">
+        <h1 className="text-3xl font-semibold mt-4 pl-20 text-black text-center">My Account</h1>
         <div className="max-w-md mx-auto justify-items-center">
           <div className="pl-20">
             <div className="shrink-0 ml-20">
@@ -121,7 +119,7 @@ const Profile = () => {
           <div>
             <button
               type="button"
-              className="w-60 h-14 ml-10 px-1 bg-custom-green border custom-green text-white text-[20px] rounded-xl hover:bg-green-600 hover:text-white focus:outline-none focus:bg-green-600"
+              className="w-60 h-14 ml-[25%]  px-1 mt-[-2%] bg-custom-green border custom-green bg-green-600 text-white text-[20px] rounded-xl hover:bg-green-600 hover:text-white focus:outline-none focus:bg-green-600"
               onClick={isEditMode ? handleSaveClick : handleEditClick}
             >
               {isEditMode ? 'Done' : 'Edit'}

@@ -12,7 +12,6 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.9",
-<<<<<<< HEAD
     "@types/node": "20.6.2",
     "@types/papaparse": "^5.3.8",
     "@types/react": "18.2.21",
@@ -26,27 +25,12 @@
     "leaflet": "^1.9.4",
     "next": "13.4.19",
     "papaparse": "^5.4.1",
-=======
-    "@types/node": "20.5.9",
-    "@types/react": "18.2.21",
-    "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.15",
-    "classnames": "^2.3.2",
-    "eslint": "8.48.0",
-    "eslint-config-next": "13.4.19",
-    "isomorphic-unfetch": "^4.0.2",
-    "next": "^13.5.2",
->>>>>>> ad5a45e7c5f858e6984430af6bd21d9e6281b52a
     "postcss": "8.4.29",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
-<<<<<<< HEAD
     "react-leaflet": "^4.2.1",
     "react-modal": "^3.16.1",
-=======
-    "reacticons": "^0.0.1",
->>>>>>> ad5a45e7c5f858e6984430af6bd21d9e6281b52a
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },

@@ -5,7 +5,9 @@ import { FaSearch } from 'react-icons/fa';
 
 function Dashboard() {
   return (
-    <div className='flex ml-[350px] mt-[-950px]'>
+    <div className='flex'>
+    <div className='flex'>
+    <div className='flex ml-[40px] mt-[30px]'>
       <div className='pl-20 pt-10 '>
       <p className="text-black text-[40px] font-bold font-['Nunito']">Hello Bwiza</p>
       <div className="text-black text-2xl font-normal font-['Nunito']">Areas with the highest levels of lead exposure</div>
@@ -39,6 +41,17 @@ function Dashboard() {
       </div>
       </div>
     </div>
+    </div>
+    </div>
   );
 }
 export default Dashboard;
+
+
+
+
+
+
+
+
+

@@ -1,9 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import Papa from 'papaparse';
-import MissingColumnsModal from '../components/MissingColumnsModal';
-import UpdateFileModal from '../components/UpdateFileModal';
-import SideBar from '../sidebar';
+import MissingColumnsModal from '../modals/MissingColumnsModal';
+import UpdateFileModal from '../modals/UpdateFileModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -149,7 +148,7 @@ const DataUpload: React.FC = () => {
 
   return (
     <div className="flex flex-col md:flex-row data-upload-container">
-      <SideBar />
+      {/* <SideBar /> */}
       <div className="md-5  pl-[119px] upload-files md:w-1/2">
         <h1 className="font-nunito font-semibold text-3xl sm:text-3xl md:text-4xl mt-[65px]">Data Management</h1>
 
@@ -212,7 +211,7 @@ const DataUpload: React.FC = () => {
           </div>
           <button
             onClick={handleUpload}
-            className="ml-[110px] w-[150px] h-[50px] text-white px-4 py-3 rounded-md mt-2 pr-5 font-nunito bg-neza-green-200 bg-[#2DCD1F]"
+            className="ml-[85px] w-[150px] h-[50px] text-white px-4 py-3 rounded-md mt-2 pr-5 font-nunito bg-neza-green-200 bg-[#2DCD1F]"
           >
             Done
           </button>

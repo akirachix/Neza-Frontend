@@ -35,10 +35,10 @@ export default function NairobiMap() {
   return (
     <div style={{ height: '500px', width: '100%', marginTop: '3%' }}>
       <MapContainer
-        // center={mapCenter}
+        center={mapCenter}
         zoom={13}
         style={{ height: '100%', width: '100%' }}
-        // maxBounds={nairobiBounds}
+        maxBounds={nairobiBounds}
         minZoom={10}
         maxZoom={30}
       >
@@ -46,9 +46,9 @@ export default function NairobiMap() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* <Marker position={mapCenter}>
+        <Marker position={mapCenter}>
           <Popup>Nairobi, Kenya</Popup>
-        </Marker> */}
+        </Marker>
         {leadPoisoningLocations.map((location, index) => (
           <Marker key={index} position={[location.lat, location.lng]} icon={greenIcon}>
             <Popup>
