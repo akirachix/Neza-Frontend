@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link'
@@ -40,13 +41,15 @@ function Signup() {
         />
       </div>
       <div className='pl-40'>
-      <Link href="">
+      <Link href="/profile">
       <button
-            className="ml-10 bg-green-500 text-white px-4 py-3 mt-20 rounded-[10px] w-[180px] h-[70px] rounded-md mt-2 pr-5 bg-neza-green-200">
+            className="ml-10 bg-green-500 text-white px-4 py-3 mt-20 rounded-[10px] w-[180px] h-[70px] rounded-md mt-2 pr-5 bg-neza-green-200"
+            type='submit'>
+
             Sign Up
           </button>
       </Link>
-      <Link href="./Login/login">
+      <Link href="/Signin">
       <p className='mt-10 text-black text-xl'>Already have an account? <span className='text-neza-green-400'>Sign In</span></p>
       </Link>  
       </div>

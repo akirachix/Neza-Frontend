@@ -1,19 +1,15 @@
+'use client'
 import Image from 'next/image'
-
-
-import SideBar from './Sidebar/page'
-
-
+import SideBar from './components/Sidebar'
+import Dashboard from './dashboard/page'
 
 export default function Home() {
   return (
+    <main>
+
     <div>
-  {/* <LogoutPopup onClose={undefined}/> */}
-  {/* <SideBar/> */}
-
-    
-
+        <Dashboard/>
     </div>
-    
+    </main>
   )
 }
