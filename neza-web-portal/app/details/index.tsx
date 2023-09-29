@@ -7,6 +7,8 @@ import { Orgs } from './orgs';
 import SideBar from '../components/Sidebar';
 import useGetOrganizations from '../hooks/getOrganizations/useGetOrganizations';
 Chart.register(CategoryScale, LinearScale, BarElement);
+
+
 const Graph = () => {
   const [chartData, setChartData] = useState({
     labels: ['Men', 'Children', 'Women'],
@@ -37,7 +39,9 @@ const Graph = () => {
       </div>
     </div>
   );
-};
+}
+
+;
 const Dropdown = () => {
   const [selectedOption, setSelectedOption] = useState('Add Progress');
   const options = ['Add Progress', 'Planning', 'Testing', 'Treating'];
@@ -66,9 +70,16 @@ const Dropdown = () => {
     </div>
   );
 };
+
+
+
 const Organizations = () => {
   const { organizations } = useGetOrganizations();
-  return (
+  console.log({orgs:organizations})
+
+  if (!Array.isArray(organizations) || organizations.length === 0) {
+    return <p>No organizations to display.</p>;
+  }  return (
     <div className='image flex flex-wrap gap-[5%] mt-[100px] ml-10 mb-10 mr-5'>
       {organizations.map((org) => (
         <div className='' key={org.id}>
@@ -106,3 +117,8 @@ const Details = () => {
   );
 };
 export default Details;
+
+
+
+
+

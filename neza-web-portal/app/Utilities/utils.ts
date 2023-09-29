@@ -1,6 +1,6 @@
 
 export const getStageTracking= async()=>{
-    const url ='/api/get-organizations'
+    const url ='./api/get-organizations'
     try{
         const response = await fetch(url)
         const result = await response.json();

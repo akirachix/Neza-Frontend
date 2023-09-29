@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN,BASE_URL } from "@/config";
+import {ACCESS_TOKEN, BASE_URL} from '@/config'
 export async function GET() {
     if (!BASE_URL) {
         return new Response(JSON.stringify({ error: "base URL not found" }), {
@@ -17,7 +17,7 @@ export async function GET() {
         });
     }
     try {
-        const request = await fetch('https://tinylife.pythonanywhere.com/api/stagetracking', {
+        const request = await fetch(`https://nezabackend-2a2e9782ab7f.herokuapp.com/api/stagetracking`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
