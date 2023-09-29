@@ -2,13 +2,14 @@
 import Image from 'next/image'
 import SideBar from './components/Sidebar'
 import Dashboard from './dashboard/page'
+import Details from './details'
 
 export default function Home() {
   return (
     <main>
 
     <div>
-        <Dashboard/>
+        <Details/>
     </div>
     </main>
   )

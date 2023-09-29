@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from "react";
 import { CgMenu } from "react-icons/cg";
 import { RxDashboard, RxExit, RxPerson, RxPieChart } from "react-icons/rx";
@@ -7,7 +7,9 @@ import classNames from "classnames";
 import LogoutModal from "@/app/modals/SignOutPopUp";
 import Profile from "../../profile/page";
 import { link } from "fs";
+// import useSignOut from "@/app/hooks/post-logout/useLogiOut";
 
+// const { showLogoutPopup, handleSignOut, handleClosePopup } = useSignOut();
 type MenuItem = {
   id: number;
   label: string;
@@ -66,6 +68,7 @@ const SideBar = () => {
   };
 
   const handleLogoutConfirmation = ()=>{
+    // handleSignOut()
   
   };
 

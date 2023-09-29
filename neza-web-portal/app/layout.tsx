@@ -35,7 +35,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import SideBar from './components/Sidebar'
-
+import Details from './details'
+// import YourComponent from './StageTracking'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -53,8 +54,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className='flex'>
-          <SideBar/>
-          {children} 
+           {/* <SideBar/> */}
+           <Details/>
+         
+          {/* <YourComponent/> */}
         </div>
       </body>
     </html>
