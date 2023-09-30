@@ -2,6 +2,7 @@
 // import type { Metadata } from 'next'
 // import { Inter } from 'next/font/google'
 // import Nav from './components/layout'
+import LogoutModal from './modals/SignOutPopUp'
 
 // const inter = Inter({ subsets: ['latin'] })
 // export const metadata: Metadata = {
@@ -54,8 +55,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className='flex'>
-           {/* <SideBar/> */}
-           <Details/>
+          <SideBar/>
+           {/* <Details/> */}
          
           {/* <YourComponent/> */}
         </div>

@@ -6,10 +6,11 @@ import Link from "next/link";
 import classNames from "classnames";
 import LogoutModal from "@/app/modals/SignOutPopUp";
 import Profile from "../../profile/page";
+import { token } from "@/config";
 import { link } from "fs";
-// import useSignOut from "@/app/hooks/post-logout/useLogiOut";
+import usePostLogOut from "@/app/hooks/usePostLogout";
 
-// const { showLogoutPopup, handleSignOut, handleClosePopup } = useSignOut();
+
 type MenuItem = {
   id: number;
   label: string;
@@ -18,15 +19,32 @@ type MenuItem = {
 };
 
 const SideBar = () => {
+
   const menuItems: MenuItem[] = [
     { id: 1, label: "Dashboard", link: "/", icon: <RxDashboard /> },
     { id: 2, label: "Data Management", link: "/datamanagement", icon: <RxPieChart /> },
     { id: 3, label: "Profile", link: '/profile', icon: <RxPerson /> },
   ];
 
+ 
   const [toggleCollapse, setToggleCollapse] = useState(false);
   const [activeLink, setActiveLink] = useState("/");
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+
+  const logOutResult = usePostLogOut(); // Call the hook directly here
+
+  const handleLogoutConfirmation = async () => {
+    try {
+      if (logOutResult === "success") {
+        window.location.href = "/signin";
+      } else {
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
+
 
 
   const handleActiveLink=(link:any)=>{
@@ -67,10 +85,6 @@ const SideBar = () => {
     }
   };
 
-  const handleLogoutConfirmation = ()=>{
-    // handleSignOut()
-  
-  };
 
   const sidebarClasses = classNames("h-screen px-4 pt-8 pb-4 bg-green-800 flex flex-col justify-between transition-all duration-300", {
     "w-80": !toggleCollapse,
