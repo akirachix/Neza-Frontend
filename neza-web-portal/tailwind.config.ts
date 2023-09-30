@@ -13,7 +13,10 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      color: {
+      backgroundColor: {
+        'custom-green': '#2CCD1F', 
+      },
+      Color: {
 
         'neza':{
           'green': {
@@ -41,4 +44,5 @@ const config: Config = {
   },
   plugins: [],
 }
+
 export default config
