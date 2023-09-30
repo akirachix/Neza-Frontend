@@ -5,7 +5,7 @@ import { RxDashboard, RxExit, RxPerson, RxPieChart } from "react-icons/rx";
 import Link from "next/link";
 import classNames from "classnames";
 import LogoutModal from "@/app/modals/SignOutPopUp";
-import Profile from "../../profile/page";
+// import Profile from "../../profile/page";
 import { link } from "fs";
 
 type MenuItem = {
