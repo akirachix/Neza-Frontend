@@ -22,6 +22,15 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/signout/index.ts",
+    "app/signout/index.js"
+, "app/modals/SignOutPopUp/index.tsx"  ],
+  
   "exclude": ["node_modules"]
 }
+

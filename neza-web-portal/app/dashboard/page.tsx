@@ -1,15 +1,17 @@
-'use client'
+'use client';
 import React from 'react';
 import NairobiMap from '../atoms/map';
-import SideBar from '../components/Sidebar';
 import { FaSearch } from 'react-icons/fa';
-
+import SideBar from '../components/Sidebar';
 
 function Dashboard() {
   return (
-    <div className='flex ml-[350px] mt-[-950px]'>
+    <div className='flex'>
+      <SideBar/>
+    <div className='flex'>
+    <div className='flex ml-[40px] mt-[30px]'>
       <div className='pl-20 pt-10 '>
-      <p className="text-black text-[40px] font-bold font-['Nunito']">Hello Bwiza</p>  
+      <p className="text-black text-[40px] font-bold font-['Nunito']">Hello Bwiza</p>
       <div className="text-black text-2xl font-normal font-['Nunito']">Areas with the highest levels of lead exposure</div>
       <div className='flex space-x-40'>
       <div className="mt-5 pl-20 w-[310px] h-[124px] pt-4 rounded-[10px] border-2 border-green-600 ">
@@ -41,7 +43,8 @@ function Dashboard() {
       </div>
       </div>
     </div>
+    </div>
+    </div>
   );
 }
-
 export default Dashboard;

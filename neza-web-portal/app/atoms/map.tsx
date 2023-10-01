@@ -14,10 +14,9 @@ export default function NairobiMap() {
   ];
   const leadPoisoningLocations = [
     { lat: -1.2801, lng: 36.8219, name: 'Location 1', percentage: 80},
-    { lat: -1.2921, lng: 36.8212, name: 'Location 2', percentage: 60 },
-    { lat: -1.2701, lng: 36.8719, name: 'Location 3', percentage: 20 },
-    { lat: -1.3021, lng: 36.8214, name: 'Location 4', percentage: 50 },
-    { lat: -1.2801, lng: 36.7219, name: 'Location 5', percentage: 70 },
+    { lat: -1.2921, lng: 36.8212, name: 'Athi River', percentage: 60 },
+    { lat: -1.2701, lng: 36.8719, name: 'South C', percentage: 20 },
+    { lat: -1.3021, lng: 36.8214, name: 'Mwiki', percentage: 50 },
     { lat: -1.2921, lng: 36.8112, name: 'Location 6', percentage: 10 },
   ];
   const greenIcon = new L.Icon({
@@ -28,7 +27,6 @@ export default function NairobiMap() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41],
   });
-
   const togglePopup = () => {
     setPopupOpen(!popupOpen);
   };
@@ -54,7 +52,7 @@ export default function NairobiMap() {
             <Popup>
               <div>
                 <h3>{location.name}</h3>
-                <p>Percentage: {location.percentage}%</p>
+                <p>Avg BLLs: {location.percentage}%</p>
               </div>
             </Popup>
           </Marker>
