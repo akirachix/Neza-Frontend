@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
+import SideBar from '../components/Sidebar';
 
 const Profile = () => {
   const initialFormData = {
@@ -102,9 +103,13 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex bg-white">
-      <div className="m-auto ml-[40%]">
-        <h1 className="text-3xl font-semibold mt-4 pl-20 text-black text-center">My Account</h1>
+    <div className=' flex'>
+      <SideBar/>
+
+    <div className="bg-white ml-[10%]">
+      <div className="m-auto">
+    </div>
+        <h1 className="text-2xl font-semibold mt-3 pl-20 text-black text-center">My Account</h1>
         <div className="max-w-md mx-auto justify-items-center">
           <div className="pl-20">
             <div className="shrink-0 ml-20">

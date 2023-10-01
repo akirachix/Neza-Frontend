@@ -1,17 +1,14 @@
-import { postLogOut } from "../Utilities/utils";
-import { useEffect, useState } from "react";
-
-const usePostLogOut = () => {
-    const [logOut, setLogOut] = useState<string>("");
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import cookie from 'cookiejs';
+const useUserLogOut = () => {
   
-    useEffect(() => {
-      (async () => {
-        const result = await postLogOut();
-        setLogOut(result);
-      })();
-    }, []);
-  
-    return logOut;
+  const router = useRouter();
+  const handleUserLogOut = () => {
+    cookie.remove('user Loggen in');
+    router.push('/signup');
   };
+  return { handleUserLogOut };
+};
+export default useUserLogOut;
 
-export default usePostLogOut;

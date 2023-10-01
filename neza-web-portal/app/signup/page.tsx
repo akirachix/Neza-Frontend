@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link'
@@ -7,7 +7,7 @@ function Signup() {
   return (
     <div className="max-w-full mt- ml-10 bg-white pl-[280px] pt-20">
       <Image
-      src="/LOGO.png"
+      src="/images/LOGO.png"
       width={70}
       height={60}
       alt="logo"

@@ -1,23 +1,28 @@
-
-export const Orgs =[
+export const Orgs = [
     {
-        imgs : '/unep.png',
-        stage : "Planning" ,
-    } ,
+      img: 'images/unep.png',
+      width: 200,
+      height: 200,
+    },
     {
-        imgs : '/unep.png',
-        stage : "testing" ,
-    } ,
+      img: 'images/shofco.png',
+      width: 150,
+      height: 150,
+    },
     {
-        imgs : '/unep.png',
-        stage : "Planning" ,
-    } ,
+      img: 'images/WHO.png',
+      width: 250,
+      height: 250,
+    },
     {
-        imgs : '/unep.png',
-        stage : "Treating" ,
-    } ,
+      img: '/unep.png',
+      width: 180,
+      height: 180,
+    },
     {
-        imgs : '/unep.png',
-        stage : "Planning" ,
-    } ,
-]        
+      img: '/unep.png',
+      width: 160,
+      height: 160,
+    },
+  ];
+  

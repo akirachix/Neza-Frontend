@@ -7,8 +7,10 @@ import classNames from "classnames";
 import LogoutModal from "@/app/modals/SignOutPopUp";
 import Profile from "../../profile/page";
 import { token } from "@/config";
-import { link } from "fs";
-import usePostLogOut from "@/app/hooks/usePostLogout";
+import useUserLogOut from "@/app/hooks/usePostLogout";
+
+
+
 
 
 type MenuItem = {
@@ -19,7 +21,8 @@ type MenuItem = {
 };
 
 const SideBar = () => {
-
+  const { handleUserLogOut } = useUserLogOut();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const menuItems: MenuItem[] = [
     { id: 1, label: "Dashboard", link: "/", icon: <RxDashboard /> },
     { id: 2, label: "Data Management", link: "/datamanagement", icon: <RxPieChart /> },
@@ -31,17 +34,9 @@ const SideBar = () => {
   const [activeLink, setActiveLink] = useState("/");
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
-  const logOutResult = usePostLogOut(); // Call the hook directly here
+  const handleLogoutConfirmation = () => {
+    setShowLogoutModal(false);
 
-  const handleLogoutConfirmation = async () => {
-    try {
-      if (logOutResult === "success") {
-        window.location.href = "/signin";
-      } else {
-      }
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
   };
 
 
@@ -64,8 +59,7 @@ const SideBar = () => {
       {
         "justify-center": toggleCollapse,
         "hover:text-yellow-500": !toggleCollapse && activeLink !== menu.link,
-        "mr-2": toggleCollapse,
-      
+        "mr-2": toggleCollapse,     
         "text-yellow-500": activeLink === menu.link || (menu.link === "/" && activeLink === "/"),
         "text-white": activeLink !== menu.link,
       }

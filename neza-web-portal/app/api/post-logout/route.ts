@@ -1,50 +1,37 @@
-import {token, BASE_URL} from '@/config'
-export async function POST() {
-    if (!BASE_URL) {
-        return new Response(JSON.stringify({ error: "base URL not found" }), {
-            status: 404,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    }
-    if (!token) {
-        return new Response(JSON.stringify({ error: "API token not found" }), {
-            status: 400,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    }
-    try {
-        const request = await fetch(`${BASE_URL}/api/logout/`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                'Authorization': `Bearer ${token}`
-            },
-        });
-        if (!request.ok) {
-            throw new Error(`Request failed with status ${request.status}`);
-        }
-        const responseJson = await request.json();
-        return new Response(JSON.stringify(responseJson), {
-            status: 200,
-            statusText: 'Success',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    } catch (error:any) {
-        return new Response(error.message, {
-            status: 500,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    }
-}
+import { BASE_URL, token } from "@/config";
 
+export async function POST(request: Request) {
+    try {
+      if (!BASE_URL) {
+        return new Response("Base URL not found", {
+          status: 404,
+          statusText: "Failed",
+        });
+      }
+  
+      const body = await request.json();
+      const result = await fetch(`${BASE_URL}/api/logout/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+      });
+  
+      const logout = await result.json();
+  
+      return new Response(JSON.stringify(logout), {
+        status: 201,
+        statusText: "Success",
+      });
+    } catch (error: any) {
+      return new Response(error.message, {
+        status: 500,
+        statusText: "Failed",
+      });
+    }
+  }
 
 
 

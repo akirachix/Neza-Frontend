@@ -21,7 +21,7 @@ const Graph = () => {
   });
   return (
     <div>
-      <p className='pb-10 ml-[20px]'>Population in Kitisuru</p>
+      <p className='pb-10 ml-[20px] font-bold  text-[25px]'>Population in Kitisuru</p>
       <div className='w-[550px] p-4 bg-white'>
         <Bar
           data={chartData}
@@ -49,7 +49,7 @@ const Dropdown = () => {
     setSelectedOption(e.target.value);
   };
   return (
-    <div className='bg-none w-[250px] rounded-[10px] pt-5 pl-5 pr-5 ml-[200%]'>
+    <div className='bg-none w-[250px] rounded-[10px] pt-5 pl-5 pr-5 ml-[120%]'>
       <select
         id='dropdown'
         className='text-white text-xl p-2 rounded-[10px] font-bold bg-green-400'
@@ -80,18 +80,37 @@ const Organizations = () => {
   if (!Array.isArray(organizations) || organizations.length === 0) {
     return <p>No organizations to display.</p>;
   }  return (
-    <div className='image flex flex-wrap gap-[5%] mt-[100px] ml-10 mb-10 mr-5'>
-      {organizations.map((org) => (
-        <div className='' key={org.id}>
-          <img src={'images/unep.png'} alt='product' className='w-[150px]' />
-          <h1 className='mt-5 text-[25px] font-bold text-black ml-5'>
+    <>
+       <h1 className='ml-8 font-bold  text-[25px] mb-[-50px]'>Organzations Currently here</h1>
+      <div className='flex'>
+   
+        <div className=' image flex flex-wrap mt-[100px] ml-10 mb-10 '>
+      
+      {organizations.map((org, index) => (
+        <div className='gap-10 pl-[20px]' key={org.organizationName}>
+        
+          <img
+            src={Orgs[index % Orgs.length].img}
+            alt='product'
+            className='h-[130px] '
+          />
+
+        
+         
+          <h1 className='text-[25px] font-bold text-black ml-[3]'>
             {org.stage_name}
           </h1>
-          {/* <p className='text-gray-500'>ID: {org.id}</p> */}
-          <p className='text-gray-500'>Description: {org.description}</p>
+          <p className='text-gray-500 '>{org.description}</p>
         </div>
       ))}
+ 
     </div>
+
+    </div>
+    </>
+    
+  
+  
   );
 };
 const Details = () => {
@@ -103,12 +122,6 @@ const Details = () => {
         <div>
           <Graph />
           <div>
-            <button
-              type='submit'
-              className='w-60 ml-[5%] px-4 py-2 bg-green-400 border-none text-black text-2xl rounded-xl hover:bg-green-600 hover:text-white focus:outline-none focus:bg-green-600'
-            >
-              View Full Report
-            </button>
             <Organizations />
           </div>
         </div>
