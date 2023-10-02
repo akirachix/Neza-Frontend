@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/app/config";
 
 const ACCESS_TOKEN = '';
-const API_URL = `${BASE_URL}api/user/details`;
+const API_URL = `https://nezabackend-2a2e9782ab7f.herokuapp.com/api/user/details/`;
 
 export async function getUserDetails() {
     if (!BASE_URL) {
