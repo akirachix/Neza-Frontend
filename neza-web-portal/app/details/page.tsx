@@ -81,7 +81,7 @@ const Organizations = () => {
     return <p>No organizations to display.</p>;
   }  return (
     <>
-       <h1 className='ml-8 font-bold  text-[25px] mb-[-50px]'>Organzations Currently here</h1>
+       <h1 className='ml-8 font-bold  text-[25px] mb-[-93px]'>Organzations Currently here</h1>
       <div className='flex'>
    
         <div className=' image flex flex-wrap mt-[100px] ml-10 mb-10 '>
