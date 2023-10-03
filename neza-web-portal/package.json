@@ -22,8 +22,10 @@
     "crypto-js": "^4.1.1",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "express": "^4.18.2",
     "icons": "^1.0.0",
     "leaflet": "^1.9.4",
+    "multer": "^1.4.5-lts.1",
     "next": "13.4.19",
     "papaparse": "^5.4.1",
     "postcss": "8.4.29",
@@ -34,10 +36,14 @@
     "react-leaflet": "^4.2.1",
     "react-modal": "^3.16.1",
     "tailwindcss": "3.3.3",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.2",
     "@types/leaflet": "^1.9.6",
-    "@types/react-modal": "^3.16.0"
+    "@types/multer": "^1.4.8",
+    "@types/react-modal": "^3.16.0",
+    "@types/uuid": "^9.0.4"
   }
 }

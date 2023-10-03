@@ -55,7 +55,8 @@ const UpdateFileModal: React.FC<UpdateFileModalProps> = ({ fileData, onClose, on
           <br />
           <button className="bg-red-500 text-white px-4 py-2 rounded-md" onClick={onClose}>
             Cancel
-          </button>
+            </button>
+
         </div>
       </div>
     </>

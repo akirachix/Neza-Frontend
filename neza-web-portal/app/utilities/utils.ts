@@ -1,9 +1,10 @@
-
 export const getFiles= async()=>{
     const url = '/api/get-files';
     try{
         const response = await fetch(url);
         const result = await response.json();
+        console.log({result});
+        
         return result
     }
     catch(error:any){
@@ -11,33 +12,31 @@ export const getFiles= async()=>{
     }
 }
 
-// new code 
 
-interface FilesData {
-   
-    location: string;
-    sources_of_water: number;
-    proximity_to_industries: string;
-    number_of_garages_in_area: number;
-    proximity_to_dumpsite: number;
-    presence_of_open_sewage: number;
-    past_cases_of_lead_poisoning: number;
-    women_and_children_population: number;
+
+
+// utils.ts
+import axios from 'axios';
+
+export const uploadfile = async (file: File) => {
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await axios.post('https://nezabackend-2a2e9782ab7f.herokuapp.com/api/upload/', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    throw new Error('File upload failed.');
   }
-  
-  export const uploadfile= async (userData: FilesData) => {
-    const url = './api-post-files';
-    try {
-      const response = await fetch (url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-      const result = await response.json();
-      return result;
-    } catch (error: any) {
-      return error.message;
-    }
-  };
+};
+
+
+
+
+
+

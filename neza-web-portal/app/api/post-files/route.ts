@@ -1,24 +1,25 @@
-// import { BASE_URL } from "@/config";
 import { BASE_URL } from "../../../../config";
+
 export async function POST(request: Request) {
   try {
     if (!BASE_URL) {
-      return new Response("Base URL not found", {
+      return new Response("Base url not found", {
         status: 404,
         statusText: "Failed",
       });
     }
-    const body = await request.json().then(response => response);
-    const result = await fetch(`https://nezabackend-2a2e9782ab7f.herokuapp.com/api/upload`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
+    const admin = await request.json().then(async (response) => {
+      const result = await fetch(` https://nezabackend-2a2e9782ab7f.herokuapp.com/api/upload/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(response),
+      });
+      const post = await result.json();
+      return post;
     });
-    const user = await result.json();
-console.log('users', user);
-    return new Response(JSON.stringify(user), {
+    return new Response(JSON.stringify(admin), {
       status: 201,
       statusText: "Success",
     });
@@ -29,3 +30,10 @@ console.log('users', user);
     });
   }
 }
+
+
+
+
+
+
+

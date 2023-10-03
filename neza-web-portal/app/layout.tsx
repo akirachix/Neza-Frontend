@@ -38,6 +38,7 @@ import SideBar from './components/Sidebar'
 import MyPage from './profile/page'
 import Details from './details'
 import DataUpload from './datamanagement/page'
+import Signup from './signup/page'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -57,7 +58,7 @@ export default function RootLayout({
       <body>
         <div className='flex'>
          {/* <Details/>  */}
-        
+        {/* <Signup/> */}
            <SideBar/>
            {/* <DataUpload/> */}
           {children}  
