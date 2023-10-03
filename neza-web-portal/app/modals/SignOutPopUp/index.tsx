@@ -9,6 +9,7 @@ type LogoutModalProps = {
   activeLink: string; 
 };
 
+
 const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onLogout, activeLink }:LogoutModalProps) => {
 
   const { handleUserLogOut } = useLogout();
