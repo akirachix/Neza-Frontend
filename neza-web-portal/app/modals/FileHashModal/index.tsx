@@ -4,6 +4,7 @@ interface FileHashModalProps {
   files: Array<{ file_hash: string;}>;
   onClose: () => void;
 }
+
 function FileHashModal({ fileHash, files, onClose }: FileHashModalProps) {
   const filteredFiles = files.filter((file) => file.file_hash === fileHash);
   return (
