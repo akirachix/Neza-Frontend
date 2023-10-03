@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from "react";
 import { CgMenu } from "react-icons/cg";
 import { RxDashboard, RxExit, RxPerson, RxPieChart } from "react-icons/rx";
@@ -6,7 +6,12 @@ import Link from "next/link";
 import classNames from "classnames";
 import LogoutModal from "@/app/modals/SignOutPopUp";
 import Profile from "../../profile/page";
-import { link } from "fs";
+import { token } from "@/config";
+import useUserLogOut from "@/app/hooks/usePostLogout";
+
+
+
+
 
 type MenuItem = {
   id: number;
@@ -16,15 +21,25 @@ type MenuItem = {
 };
 
 const SideBar = () => {
+  const { handleUserLogOut } = useUserLogOut();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const menuItems: MenuItem[] = [
     { id: 1, label: "Dashboard", link: "/", icon: <RxDashboard /> },
     { id: 2, label: "Data Management", link: "/datamanagement", icon: <RxPieChart /> },
     { id: 3, label: "Profile", link: '/profile', icon: <RxPerson /> },
   ];
 
+ 
   const [toggleCollapse, setToggleCollapse] = useState(false);
   const [activeLink, setActiveLink] = useState("/");
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+
+  const handleLogoutConfirmation = () => {
+    setShowLogoutModal(false);
+
+  };
+
+
 
 
   const handleActiveLink=(link:any)=>{
@@ -44,8 +59,7 @@ const SideBar = () => {
       {
         "justify-center": toggleCollapse,
         "hover:text-yellow-500": !toggleCollapse && activeLink !== menu.link,
-        "mr-2": toggleCollapse,
-      
+        "mr-2": toggleCollapse,     
         "text-yellow-500": activeLink === menu.link || (menu.link === "/" && activeLink === "/"),
         "text-white": activeLink !== menu.link,
       }
@@ -65,9 +79,6 @@ const SideBar = () => {
     }
   };
 
-  const handleLogoutConfirmation = ()=>{
-  
-  };
 
   const sidebarClasses = classNames("h-screen px-4 pt-8 pb-4 bg-green-800 flex flex-col justify-between transition-all duration-300", {
     "w-80": !toggleCollapse,
