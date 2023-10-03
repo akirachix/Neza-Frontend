@@ -23,8 +23,8 @@ export default function RootLayout({
       <body>
         <div className='flex'>
           
-          {children}
-     {/* <Details/> */}
+          {/* {children} */}
+      <Details/>
           
        
      

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, BarElement } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { Orgs } from './orgs';
+import { Orgs } from '.';
 import SideBar from '../components/Sidebar';
 import useGetOrganizations from '../hooks/getOrganizations/useGetOrganizations';
 Chart.register(CategoryScale, LinearScale, BarElement);

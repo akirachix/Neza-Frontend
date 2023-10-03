@@ -9,7 +9,7 @@ export default function Home() {
     <main>
 
     <div>
-      <Dashboard/>
+      <Details/>
    
     </div>
     </main>

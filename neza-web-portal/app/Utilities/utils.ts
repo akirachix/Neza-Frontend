@@ -1,5 +1,15 @@
 import { token ,BASE_URL} from "@/config"
 
+interface FilesData {
+  location: string;
+  sources_of_water: number;
+  proximity_to_industries: string;
+  number_of_garages_in_area: number;
+  proximity_to_dumpsite: number;
+  presence_of_open_sewage: number;
+  past_cases_of_lead_poisoning: number;
+  women_and_children_population: number;
+}
 
 
 export const getStageTracking= async()=>{
@@ -14,6 +24,9 @@ export const getStageTracking= async()=>{
     }
 }
 
+
+
+
   export const getFiles= async()=>{
     const url = '/api/get-files';
     try{
@@ -26,16 +39,6 @@ export const getStageTracking= async()=>{
     }
 }
 
-interface FilesData {
-    location: string;
-    sources_of_water: number;
-    proximity_to_industries: string;
-    number_of_garages_in_area: number;
-    proximity_to_dumpsite: number;
-    presence_of_open_sewage: number;
-    past_cases_of_lead_poisoning: number;
-    women_and_children_population: number;
-  }
   export const uploadfile= async (userData: FilesData) => {
     const url = './api-post-files';
     try {
