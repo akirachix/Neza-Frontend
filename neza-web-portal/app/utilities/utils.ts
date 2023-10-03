@@ -63,3 +63,26 @@ export const loginUser = async (loginData: LoginData) => {
       return error.message;
     }
   };
+
+
+  interface MapData {
+    prediction: string;
+}
+  
+export const getLocations = async (prediction : MapData) => {
+    const url = `https://4912-2c0f-fe38-2240-3ea6-b2b8-fa3b-89ad-7933.ngrok-free.app/api`
+
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(prediction),
+      });
+      const result = await response.json();
+      return result;
+    } catch (error: any) {
+      return error.message;
+    }
+  };

@@ -2,18 +2,14 @@ import { useEffect, useState } from "react";
 import { getLocations } from "@/app/utilities/utils";
 
 interface MapData {
-location:string;
-longitude:number;
-latitude:number
-immunization_rate: number;
+prediction:string
 }
-const useGetLocations = ()=>{
-  const [locations, setLocations] = useState<MapData[]>([]);
+const useGetLocations = (initialMapData : MapData)=>{
+  const [locations, setLocations] = useState<MapData>(initialMapData);
   useEffect(()=>{
     (async()=>{
-      const location = await getLocations();
+      const location = await getLocations(initialMapData);
       setLocations(location);
-      // console.log('Filtered CHVs:', location);
     })();
   },[])
   return {locations}

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import NairobiMap from '../atoms/map';
+import NairobiMap from '../components/dynamicNairobiMap';
 import { FaSearch } from 'react-icons/fa';
 import SideBar from '../components/Sidebar';
 

@@ -7,6 +7,7 @@ import classNames from "classnames";
 import LogoutModal from "@/app/modals/SignOutPopUp";
 import Profile from "../../profile/page";
 import { link } from "fs";
+import Image from "next/image";
 
 type MenuItem = {
   id: number;
@@ -102,7 +103,7 @@ const SideBar = () => {
       <div className="flex flex-col pl-3">
         <div className="flex items-center justify-between relative">
           <div className="flex items-center pl-1 gap-4 flex-col">
-            <img
+            <Image
               src="/LOGO.png"
               alt="Logo"
               width={toggleCollapse ? 45 : 90}

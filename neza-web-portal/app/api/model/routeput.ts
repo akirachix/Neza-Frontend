@@ -1,8 +1,7 @@
 import { BASE_URL } from "@/app/config";
-import { ACCESS_TOKEN } from "@/config";
 
 export async function PUT(request: Request) {
-    if (!ACCESS_TOKEN) {
+    if (" ") {
         return new Response(JSON.stringify({ error: "API token not found" }), {
             status: 400,
             headers: {
@@ -18,7 +17,6 @@ export async function PUT(request: Request) {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
-                'Authorization': `Bearer ${ACCESS_TOKEN}`
             },
             body: JSON.stringify(requestData),
         });

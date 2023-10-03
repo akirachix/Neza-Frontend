@@ -5,8 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useLogin from '@/app/hooks/useLogin';
 
-const defaultPageLink = "/dashboard";
-
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +15,7 @@ function Login() {
     password: password,
   });
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleLoginUser = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -26,7 +24,7 @@ function Login() {
 
     if (user) {
       setMessage('Login Successful!');
-      router.push('/dashboard')
+      router.push('/dashboard');
     } else {
       setMessage('Login failed. Please check your credentials');
     }
@@ -36,8 +34,6 @@ function Login() {
       setShowPopup(false);
     }, 3000);
   };
-
-  console.log(user);
 
   return (
     <div className="max-w-full w-auto h-auto mt- ml-10 bg-white pl-[280px] pt-20">
@@ -51,14 +47,14 @@ function Login() {
                 Enter Username:
               </label>
               <input
-          type="text"
-          id="username"
-          name="username"
-          className= "w-[583px] h-[57px] rounded-[10px] border-2 border-green-400 border-opacity-30"
-          value={username}
+                type="text"
+                id="username"
+                name="username"
+                className="w-[583px] h-[57px] rounded-[10px] border-2 border-green-400 border-opacity-30"
+                value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-        />
+              />
             </div>
             <div className="mb-10 mt-10">
               <label htmlFor="password" className="block text-gray-700 mb-2 ml-10 font-nunito">
@@ -68,7 +64,7 @@ function Login() {
                 type="password"
                 id="password"
                 name="password"
-                className= "w-[583px] h-[57px] rounded-[10px] border-2 border-green-400 border-opacity-30"
+                className="w-[583px] h-[57px] rounded-[10px] border-2 border-green-400 border-opacity-30"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -94,7 +90,7 @@ function Login() {
               </button>
               <Link href="/signup">
                 <p className="mt-10 text-black text-xl font-normal font-['Nunito']">
-                  Don't have an account? <span className="text-green-400">Sign Up</span>
+                  Don&apos;t have an account? <span className="text-green-400">Sign Up</span>
                 </p>
               </Link>
             </div>

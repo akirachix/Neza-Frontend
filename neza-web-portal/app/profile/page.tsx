@@ -1,140 +1,107 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import SideBar from '../components/Sidebar';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
+import useLogin from '@/app/hooks/useLogin';
 
-const Profile = () => {
-  const initialFormData = {
-    organizationName: 'Bwiza',
-    emailAddress: 'bwiza@gmail.com',
-    organizationType: 'NPO',
-    phoneNumber: '+254 701376609',
-    website: 'https://www.bwiza.com',
-    password: '1234',
-  };
+function Login() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const { user, handleLogin } = useLogin({
+    username: username,
+    password: password,
+  });
 
-  const [formData, setFormData] = useState(initialFormData);
-  const [isEditMode, setIsEditMode] = useState(false);
-  
+  const router = useRouter();
 
-  useEffect(() => {
-
-  }, []);
-
-  const handleEditClick = () => {
-    setIsEditMode(true);
-  };
-
-  const handleSaveClick = () => {
-    setIsEditMode(false);
-    alert('Details updated successfully');
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLoginUser = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    alert('Your details have been updated successfully');
+
+    await handleLogin();
+
+    if (user) {
+      setMessage('Login Successful!');
+      router.push('/dashboard');
+    } else {
+      setMessage('Login failed. Please check your credentials');
+    }
+
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 3000);
   };
-
-  const EditIconButton = ({isEditMode}:{isEditMode:boolean}) =>{
-    return (
-    <div className="absolute right-4 top-2">
-
-
-    <EditIcon
-      onClick={isEditMode? handleEditClick : undefined}
-      className='text-black -my-[10px] '
-    />
-      </div>)
-  }
-
-  const fields = [
-    { name: 'organizationName', label: 'Organization Name' },
-    { name: 'emailAddress', label: 'Email Address' },
-    { name: 'organizationType', label: 'Organization Type' },
-    { name: 'phoneNumber', label: 'Phone Number' },
-    { name: 'website', label: 'Website' },
-    { name: 'password', label: 'Password' },
-  ];
-
-  const renderInputFields = () =>{
-    return fields.map((field)=>(
-      <div className="mb-10 relative" key={field.name}>
-      <label htmlFor={field.name} 
-      className="w-72 h-8 text-black text-[20px] font-normal">
-        {field.label}:
-      </label>
-      <div className="relative">
-          <input
-            type="text"
-            id={field.name}
-            name={field.name}
-            style={{ width: '564px' }}
-            className="w-96 px-2 py-2 border-b border-green-600 focus:outline-none focus:border-yellow-600 relative text-black"
-            required
-            value={isEditMode ? formData[field.name as keyof typeof formData] : formData[field.name as keyof typeof formData]}
-            onChange={handleInputChange}
-          />
-   
-
-        {isEditMode && (
-          <div className="absolute right-4 top-2">
-            <EditIcon style={{ color: 'black', margin: '-10px 0' }} onClick={handleEditClick} />
-          </div>
-        )}
-        {!isEditMode && (
-          <div className="absolute right-4 top-2">
-            <EditIcon
-              style={{ color: 'black', margin: '-10px 0' }}
-              onClick={handleEditClick}
-            />
-          </div>
-        )}
-      </div>
-    </div>
-    ));
-  }
 
   return (
-    <div className=' flex'>
-      <SideBar/>
-
-    <div className="bg-white ml-[10%]">
-      <div className="m-auto">
-    </div>
-        <h1 className="text-2xl font-semibold mt-3 pl-20 text-black text-center">My Account</h1>
-        <div className="max-w-md mx-auto justify-items-center">
-          <div className="pl-20">
-            <div className="shrink-0 ml-20">
-              <img src="/kanini.jpg" width={200} alt="profile" className="rounded-full" />
+    <div className="max-w-full w-auto h-auto mt- ml-10 bg-white pl-[280px] pt-20">
+      <Image src="/LOGO.png" width={70} height={60} alt="logo" className="" />
+      <div className="flex gap-x-20">
+        <div>
+          <div className="text-black text-[43px] ml-20 pl-[150px] font-['Nunito']">Sign In</div>
+          <form className="mt-10 ml-2 w-max text-[20px] font-['Nunito']" onSubmit={handleLoginUser}>
+            <div className="mb-4">
+              <label htmlFor="username" className="block text-gray-700 mb-2 ml-10 font-nunito">
+                Enter Username:
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                className="w-[583px] h-[57px] rounded-[10px] border-2 border-green-400 border-opacity-30"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
             </div>
-          </div>
+            <div className="mb-10 mt-10">
+              <label htmlFor="password" className="block text-gray-700 mb-2 ml-10 font-nunito">
+                Enter Password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                className="w-[583px] h-[57px] rounded-[10px] border-2 border-green-400 border-opacity-30"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className="pl-40">
+              {showPopup && (
+                <p className={`text-${message.includes('Successful') ? 'green' : 'red'} text-xl ml-[14%] font-normal font-['Nunito']`}>
+                  {message}
+                </p>
+              )}
+              <button
+                type="submit"
+                className="ml-10 bg-green-500 text-white px-4 py-3 mt-20 rounded-md mt-2 pr-5 font-nunito"
+                style={{
+                  width: '200px',
+                  height: '70px',
+                  borderRadius: '10px',
+                  background: '#2DCD1F',
+                }}
+              >
+                Sign In
+              </button>
+              <Link href="/signup">
+                <p className="mt-10 text-black text-xl font-normal font-['Nunito']">
+                  Don&apos;t have an account? <span className="text-green-400">Sign Up</span>
+                </p>
+              </Link>
+            </div>
+          </form>
         </div>
-
-        <form className="ml-10 pl-20" onSubmit={handleSubmit}>
-          {renderInputFields()}
-
-          <div>
-            <button
-              type="button"
-              className="w-60 h-14 ml-[25%]  px-1 mt-[-2%] bg-custom-green border custom-green bg-green-600 text-white text-[20px] rounded-xl hover:bg-green-600 hover:text-white focus:outline-none focus:bg-green-600"
-              onClick={isEditMode ? handleSaveClick : handleEditClick}
-            >
-              {isEditMode ? 'Done' : 'Edit'}
-            </button>
-          </div>
-        </form>
+        <div className="ml-10">
+          <Image src="/loc.jpg" width={500} height={500} alt="logo" className="w-[600px] h-[auto]" />
+        </div>
       </div>
     </div>
   );
-};
+}
 
-
-export default Profile;
+export default Login;
