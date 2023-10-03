@@ -5,7 +5,7 @@ import { token ,BASE_URL} from "@/config"
 export const getStageTracking= async()=>{
     const url ='api/get-organizations'
     try{
-        const response = await fetch('https://nezabackend-2a2e9782ab7f.herokuapp.com/api/stagetracking')
+        const response = await fetch(url)
         const result = await response.json();
         return result;
     }

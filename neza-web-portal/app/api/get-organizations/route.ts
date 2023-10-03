@@ -17,7 +17,7 @@ export async function GET() {
         });
     }
     try {
-        const request = await fetch(`https://nezabackend-2a2e9782ab7f.herokuapp.com/api/stagetracking`, {
+        const request = await fetch(`${BASE_URL}/api/stagetracking`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
