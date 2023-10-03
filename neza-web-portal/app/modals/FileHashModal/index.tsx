@@ -1,7 +1,7 @@
 import React from 'react';
 interface FileHashModalProps {
   fileHash: string;
-  files: Array<{ file_hash: string; /* Other file properties here */ }>;
+  files: Array<{ file_hash: string;}>;
   onClose: () => void;
 }
 function FileHashModal({ fileHash, files, onClose }: FileHashModalProps) {
@@ -12,7 +12,9 @@ function FileHashModal({ fileHash, files, onClose }: FileHashModalProps) {
         <h2>Files with File Hash: {fileHash}</h2>
         <ul>
           {filteredFiles.map((file, index) => (
-            <li key={index}>{/* Display file details here */}</li>
+            <li key={index}>
+              
+            </li>
           ))}
         </ul>
         <button onClick={onClose}>Close</button>

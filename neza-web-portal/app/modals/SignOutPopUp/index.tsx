@@ -13,8 +13,8 @@ const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onLogout, ac
 
   const { handleUserLogOut } = useLogout();
   const handleLogoutConfirmation = () => {
-    handleUserLogOut(); // Call the handleUserLogOut function to remove the user login cookie and perform logout logic
-    onClose(); // Call the onClose function passed as a prop to close the popup
+    handleUserLogOut(); 
+    onClose();
   };
 
   return (
