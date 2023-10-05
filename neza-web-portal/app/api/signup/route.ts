@@ -9,7 +9,7 @@ export async function POST(request: Request) {
       });
     }
     const body = await request.json().then(response => response);
-    const result = await fetch(`https://nezabackend-2a2e9782ab7f.herokuapp.com/api/users/`, {
+    const result = await fetch(`/api/users/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

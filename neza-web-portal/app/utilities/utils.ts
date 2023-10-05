@@ -11,7 +11,7 @@ interface UsersData {
 
 
 export const signup = async (userData: UsersData) => {
-    const url = `https://nezabackend-2a2e9782ab7f.herokuapp.com/api/users/`
+    const url = `${BASE_URL}users/`
     
     try {
       const response = await fetch(url, {
@@ -47,7 +47,7 @@ interface LoginData {
 }
   
 export const loginUser = async (loginData: LoginData) => {
-    const url = `https://nezabackend-2a2e9782ab7f.herokuapp.com/api/login/`
+    const url = `/api/login/`
 
     try {
       const response = await fetch(url, {

@@ -10,7 +10,7 @@ export async function POST(request: Request) {
       });
     }
     const posts = await request.json().then(async (response) => {
-      const result = await fetch(`https://nezabackend-2a2e9782ab7f.herokuapp.com/api/login/`, {
+      const result = await fetch(`${BASE_URL}login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
