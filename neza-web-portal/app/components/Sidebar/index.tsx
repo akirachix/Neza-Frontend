@@ -41,7 +41,7 @@ const SideBar = () => {
 
   const getNavItemClasses = (menu: MenuItem) => {
     return classNames(
-      "flex items-center cursor-pointer rounded w-full overflow-hidden whitespace-nowrap my-1 p-3 mt-9 transition duration-300",
+      "flex items-center cursor-pointer rounded w-full overflow-hidden whitespace-nowrap my-1 p-3 transition duration-300",
       {
         "justify-center": toggleCollapse,
         "hover:text-green-500": !toggleCollapse && activeLink !== menu.link,
@@ -70,7 +70,7 @@ const SideBar = () => {
 
   };
 
-  const sidebarClasses = classNames("h-[800px] w-[80px] mt-[5%] ml-[4%] rounded-[10px]  pt-8 pb-4 bg-yellow-400 flex flex-col justify-between transition-all duration-300", {
+  const sidebarClasses = classNames("h-screen w-[100px] ml-[-1%] pt-8 pb-4 pl-5 mr-[5%] bg-yellow-400 flex flex-col justify-between transition-all duration-300", {
     "w-80": !toggleCollapse,
     "w-20": toggleCollapse,
     "items-center": toggleCollapse,
@@ -85,11 +85,11 @@ const SideBar = () => {
   });
 
 
-  const collapseIconClasses = classNames("p-4 rounded bg-blue absolute right-0 transition-all duration-300 mb-4", {
-    "rotate-180": toggleCollapse,
-    "mr-3.5": toggleCollapse,
-    "mb-1": toggleCollapse,
-  });
+  // const collapseIconClasses = classNames("p-4 rounded bg-blue absolute right-0 transition-all duration-300 mb-4", {
+  //   "rotate-180": toggleCollapse,
+  //   "mr-3.5": toggleCollapse,
+  //   "mb-1": toggleCollapse,
+  // });
 
   const exitIconClasses = classNames("text-black text-2xl font-bold ", {
     "ml-[-15px]": toggleCollapse,
@@ -108,15 +108,15 @@ const SideBar = () => {
               alt="Logo"
               width={toggleCollapse ? 45 : 90}
               height={toggleCollapse ? 28 : 56}
-              className={logoClasses}
+              className='mt-10 ml-[-2%]'
             />
             {!toggleCollapse && <div className="w-4" />}
           </div>
-          <button className={collapseIconClasses} onClick={handleSideBarToggle}>
+          {/* <button className={collapseIconClasses} onClick={handleSideBarToggle}>
             <CgMenu className="text-black text-2xl mt-2 ml-1" />
-          </button>
+          </button> */}
         </div>
-        <div className="flex flex-col items-start mt-10 text-black font-nunito ">
+        <div className="flex flex-col items-start mt-20 text-black font-nunito ">
           {menuItems.map(({ id, link, icon }) => (
             <Link key={id} href={link}>
               <div
@@ -127,13 +127,13 @@ const SideBar = () => {
               >
                 <div className="mr-5">
                   {React.cloneElement(icon, {
-                    className: classNames("w-22 h-23 font-bold flex-shrink-0", {
+                    className: classNames("w-22 h-[75px] font-semibold flex-shrink-0", {
                       "": activeLink === link,
                     }),
                   })}
                 </div>
                 {!toggleCollapse && (
-                  <span className={classNames("text-lg font-semibold", {
+                  <span className={classNames("text-lg font-bold", {
                     "": activeLink === link,
                   })}>
                     {}

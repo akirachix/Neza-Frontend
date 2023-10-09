@@ -1,38 +1,71 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import NairobiMap from '../components/dynamicNairobiMap';
-import { FaSearch } from 'react-icons/fa';
 import SideBar from '../components/Sidebar';
+import GirlIcon from '@mui/icons-material/Girl';
+import PregnantWomanIcon from '@mui/icons-material/PregnantWoman';
+import FactoryIcon from '@mui/icons-material/Factory';
+import WaterDropIcon from '@mui/icons-material/WaterDrop';
+import CarRepairIcon from '@mui/icons-material/CarRepair';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import Image from 'next/image';
 
 function Dashboard() {
-  const [topLocations, setTopLocations] = useState([])
-
   return (
     <div className='flex ml-[10px]'>
       <SideBar/>
-    <div className='flex'>
-    <div className='flex ml-[90px] mt-[20px]'>
-      <div className='pl-[50px] pt-10'>
+    <div className='flex ml-[90px] mt-[10px]'>
+    <div className='flex mt-[20px]'>
+      <div className='pt-10'>
       <div className='flex space-x-40'>           
       <div>
-        <h3 className='text-[22px] font-bold'>Number of children at risk</h3>
-        <div className="mt-5 pl-[35%] w-[326px] h-[161px] bg-lime-950  pt-[50px] rounded-[10px] text-white text-[30px] font-bold font-['Nunito']">154,641</div>
+        <h3 className='text-[23px] font-bold'>Children</h3>
+        <div className=" flex pt-[12%] space-x-5 mt-5 pl-[5%] w-[350px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+          <div className='text-green-800 text-2xl '>
+          <Image src="/girl.png" width={50} height={500} alt="logo" className="w-[70px]" />
+          </div>
+          <div className='text-black '>
+            <h3>No.of children at risk</h3>
+            <h1 className='text-[25px]'>154,651</h1>
+          </div>
+        </div>
       </div>
       <div>
-        <h3 className='text-[22px] font-bold'>Pregnancies at risk per month</h3>
-        <div className="mt-5 pl-[35%] w-[326px] h-[161px] bg-lime-600  pt-[50px] rounded-[10px] text-white text-[30px] font-bold font-['Nunito']">11, 237</div>
+        <h3 className='text-[23px] font-bold'>Pregnancies</h3>
+        <div className=" flex pt-[12%] space-x-5 mt-5 pl-[5%] w-[350px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+          <div className='text-6xl text-green-800'>
+          <Image src="/embryo.png" width={50} height={500} alt="logo" className="w-[70px]" />
+          </div>
+          <div className='text-black '>
+            <h3>Pregancies at risk each month</h3>
+            <h1 className='text-[25px]'>7500</h1>
+          </div>
+        </div>
       </div>
       <div>
         <h3 className='text-[22px] font-bold'>Variables considered</h3>
-        <div className="flex mt-5 pl-[4%] space-x-10 w-[326px] h-[161px] bg-lime-950  p-[10px] rounded-[10px] text-white text-[22px] font-normal font-['Nunito']">
+        <div className="flex mt-5 pl-[4%] space-x-10 w-[360px] h-[161px] bg-blue-200  p-[10px] rounded-[10px] text- text-[18px] font-normal font-['Nunito']">
           <div>
-            <p>No. of industries</p>
-            <p>Source of water</p>
+
+          <div  className='text-green-800 flex m-[5px] space-x-3'>
+            <FactoryIcon/>
+            <p className='text-black'>No. of industries</p>
+          </div>
+          <div  className=' text-green-800 flex m-[5px] mt-[25px] space-x-3'>
+            <WaterDropIcon/>
+            <p className='text-black'>Source of water</p>
+          </div>
           </div>
           <div>
-          <p>Presence of open sewage</p>
-          <p>Presence of garages</p>
+          <div  className='text-green-800  flex m-[5px] space-x-3'>
+            <RemoveCircleOutlineIcon/>
+            <p className='text-black'>Open Sewage</p>
           </div>
+          <div  className=' text-green-800 flex m-[5px] mt-[25px] space-x-3'>
+            <CarRepairIcon/>
+            <p className='text-black'>No. of Garages</p>
+          </div>
+        </div>
         </div>
       </div>
       </div>

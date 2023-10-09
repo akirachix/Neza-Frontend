@@ -7,16 +7,27 @@ interface LoginData {
 }
 
 const useLogin = (initialLoginData: LoginData) => {
-  const [user, setUser] = useState<LoginData>(initialLoginData);
+  const [user, setUser] = useState<string| object>();
+  const [error,setError] =useState<string>('')
 
-  const handleLogin = async () => {
+const handleLogin = async () => {
 
-      const response = await loginUser(initialLoginData)
-      setUser(response)
-
-
-
+if(!initialLoginData.username|| !initialLoginData.password){
+  setError("add all fields")
+  return;
 }
-return { user, handleLogin };
+else{
+  try{
+    const newUser = await loginUser(initialLoginData);
+    setUser(newUser)
+
+  } catch (error){
+    console.error('Error during signup:', error);
+    setError('Sign-up failed. Phonenumber already exists')
+  }
 }
+}
+return { user,error, handleLogin };
+};
+
 export default useLogin;
