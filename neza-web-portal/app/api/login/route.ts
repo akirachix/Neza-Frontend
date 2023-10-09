@@ -1,4 +1,3 @@
-
 import { BASE_URL } from "@/app/config";
 
 export async function POST(request: Request) {
@@ -10,7 +9,7 @@ export async function POST(request: Request) {
       });
     }
     const posts = await request.json().then(async (response) => {
-      const result = await fetch(`${BASE_URL}login/`, {
+      const result = await fetch(`${BASE_URL}api/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

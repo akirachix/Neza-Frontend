@@ -2,14 +2,14 @@ import { BASE_URL } from "@/app/config";
 
 export async function POST(request: Request) {
   try {
-    if (!`${BASE_URL}api/users/`) {
+    if (!{BASE_URL}) {
       return new Response("Base URL not found", {
         status: 404,
         statusText: "Failed",
       });
     }
     const body = await request.json().then(response => response);
-    const result = await fetch(`/api/users/`, {
+    const result = await fetch(`${BASE_URL}api/users/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
