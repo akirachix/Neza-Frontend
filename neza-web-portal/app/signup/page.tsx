@@ -152,7 +152,6 @@ function Signup() {
           required
         />
       </div>
-      {/* {user && Object.values(user)? Object.values(user)[0]: user} */}
             <div className="">
               {showPopup && (
                 <p className={`text-${message.includes('Successful') ? 'green' : 'red'} text-xl font-normal font-['Nunito']`}>

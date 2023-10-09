@@ -1,9 +1,15 @@
 'use client'
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import useLogin from '@/app/hooks/useLogin';
+=======
+import React, { useState, useEffect } from 'react';
+import EditIcon from '@mui/icons-material/Edit';
+import SideBar from '../components/Sidebar';
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -36,6 +42,7 @@ function Login() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="max-w-full w-auto h-auto mt- ml-10 bg-white pl-[280px] pt-20">
       <Image src="/LOGO.png" width={70} height={60} alt="logo" className="" />
       <div className="flex gap-x-20">
@@ -55,6 +62,19 @@ function Login() {
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
+=======
+    <div className=' flex'>
+      <SideBar/>
+
+    <div className="bg-white ml-[10%]">
+      <div className="m-auto">
+    </div>
+        <h1 className="text-2xl font-semibold mt-3 pl-20 text-black text-center">My Account</h1>
+        <div className="max-w-md mx-auto justify-items-center">
+          <div className="pl-20">
+            <div className="shrink-0 ml-20">
+              <img src="/kanini.jpg" width={200} alt="profile" className="rounded-full" />
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
             </div>
             <div className="mb-10 mt-10">
               <label htmlFor="password" className="block text-gray-700 mb-2 ml-10 font-nunito">
@@ -104,4 +124,9 @@ function Login() {
   );
 }
 
+<<<<<<< HEAD
 export default Login;
+=======
+
+export default Profile;
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
