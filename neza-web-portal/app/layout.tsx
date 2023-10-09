@@ -2,7 +2,12 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import SideBar from './components/Sidebar'
+<<<<<<< HEAD
 import Signup from './signup/page'
+=======
+import Details from './details/page'
+import DataUpload from './datamanagement/page'
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,8 +26,19 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className='flex'>
+<<<<<<< HEAD
           {/* <Signup/> */}
           {children} 
+=======
+          
+          {/* {children} */}
+      <Details/>
+          
+       
+     
+
+         
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
         </div>
       </body>
     </html>

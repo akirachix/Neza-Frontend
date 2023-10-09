@@ -1,16 +1,26 @@
-'use client'
+'use client';
 import React, { useState, useEffect } from "react";
 
 import { RxDashboard, RxExit, RxPerson, RxPieChart } from "react-icons/rx";
 import Link from "next/link";
 import classNames from "classnames";
 import LogoutModal from "@/app/modals/SignOutPopUp";
+<<<<<<< HEAD
 import Image from "next/image";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { CgMenu } from "react-icons/cg";
+=======
+import Profile from "../../profile/page";
+import { token } from "@/config";
+import useUserLogOut from "@/app/hooks/usePostLogout";
+
+
+
+
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
 
 type MenuItem = {
   id: number;
@@ -19,15 +29,25 @@ type MenuItem = {
 };
 
 const SideBar = () => {
+  const { handleUserLogOut } = useUserLogOut();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const menuItems: MenuItem[] = [
     { id: 1,  link: "/dashboard", icon: <DashboardIcon /> },
     { id: 2,  link: "/datamanagement", icon: <CloudUploadIcon /> },
     { id: 3,  link: '/profile', icon: <DescriptionIcon /> },
   ];
 
+ 
   const [toggleCollapse, setToggleCollapse] = useState(false);
   const [activeLink, setActiveLink] = useState("/");
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+
+  const handleLogoutConfirmation = () => {
+    setShowLogoutModal(false);
+
+  };
+
+
 
 
   const handleActiveLink=(link:any)=>{
@@ -44,11 +64,18 @@ const SideBar = () => {
       "flex items-center cursor-pointer rounded w-full overflow-hidden whitespace-nowrap my-1 p-3 transition duration-300",
       {
         "justify-center": toggleCollapse,
+<<<<<<< HEAD
         "hover:text-green-500": !toggleCollapse && activeLink !== menu.link,
         "mr-2": toggleCollapse,
       
         "text-green-500": activeLink === menu.link || (menu.link === "/" && activeLink === "/"),
         "text-black": activeLink !== menu.link,
+=======
+        "hover:text-yellow-500": !toggleCollapse && activeLink !== menu.link,
+        "mr-2": toggleCollapse,     
+        "text-yellow-500": activeLink === menu.link || (menu.link === "/" && activeLink === "/"),
+        "text-white": activeLink !== menu.link,
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
       }
     );
   };
@@ -66,9 +93,12 @@ const SideBar = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleLogoutConfirmation = ()=>{
 
   };
+=======
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
 
   const sidebarClasses = classNames("h-screen w-[100px] ml-[-1%] pt-8 pb-4 pl-5 mr-[5%] bg-yellow-400 flex flex-col justify-between transition-all duration-300", {
     "w-80": !toggleCollapse,
