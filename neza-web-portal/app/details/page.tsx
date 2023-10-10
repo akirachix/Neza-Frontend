@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart, CategoryScale, LinearScale, BarElement } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { Orgs } from '.';
+// import { Orgs } from '.';
 import SideBar from '../components/Sidebar';
 import useGetOrganizations from '../hooks/getOrganizations/useGetOrganizations';
 Chart.register(CategoryScale, LinearScale, BarElement);
@@ -89,11 +89,11 @@ const Organizations = () => {
       {organizations.map((org, index) => (
         <div className='gap-10 pl-[20px]' key={org.organizationName}>
         
-          <img
+          {/* <img
             src={Orgs[index % Orgs.length].img}
             alt='product'
             className='h-[130px] '
-          />
+          /> */}
 
         
          

@@ -37,7 +37,7 @@ function Dashboard() {
 
       <div>
         <h3 className='text-[20px]'>Children</h3>
-        <div className=" flex pt-[12%] space-x-5 mt-1 pl-[3%] w-[350px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+        <div className=" flex pt-[13%] space-x-5 mt-1 pl-[1%] w-[350px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
           <div className='text-green-800 text-2xl '>
           <Image src="/girl.png" width={50} height={500} alt="logo" className="w-[70px]" />
           </div>
@@ -49,7 +49,7 @@ function Dashboard() {
       </div>
       <div>
         <h3 className='text-[20px]'>Pregnancies</h3>
-        <div className=" flex pt-[12%] space-x-2 mt-1 pl-[5%] w-[330px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+        <div className=" flex pt-[13%] space-x-2 mt-1 pl-[5%] w-[330px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
           <div className='text-6xl text-green-800'>
           <Image src="/embryo.png" width={50} height={500} alt="logo" className="w-[70px]" />
           </div>
@@ -61,24 +61,24 @@ function Dashboard() {
       </div>
       <div>
         <h3 className='text-[20px]'>Variables considered</h3>
-        <div className="flex mt-1 pl-[4%] space-x-10 w-[350px] h-[161px] bg-blue-200  p-[10px] rounded-[10px] text- text-[18px] font-normal font-['Nunito']">
+        <div className="mt-1 pl-[5%] w-[350px] h-[161px] bg-blue-200  p-[10px] rounded-[10px] text- text-[18px] font-normal font-['Nunito']">
           <div>
 
           <div  className='text-green-800 flex m-[5px] space-x-3'>
             <FactoryIcon/>
             <p className='text-black'>No. of industries</p>
           </div>
-          <div  className=' text-green-800 flex m-[5px] mt-[25px] space-x-3'>
+          <div  className=' text-green-800 flex m-[5px] mt-2 space-x-3'>
             <WaterDropIcon/>
             <p className='text-black'>Source of water</p>
           </div>
           </div>
           <div>
-          <div  className='text-green-800  flex m-[5px] space-x-3'>
+          <div  className='text-green-800  flex m-[5px] mt-2 space-x-3'>
             <RemoveCircleOutlineIcon/>
             <p className='text-black'>Open Sewage</p>
           </div>
-          <div  className=' text-green-800 flex m-[5px] mt-[25px] space-x-3'>
+          <div  className=' text-green-800 flex m-[5px] mt-2 space-x-3'>
             <CarRepairIcon/>
             <p className='text-black'>No. of Garages</p>
           </div>
