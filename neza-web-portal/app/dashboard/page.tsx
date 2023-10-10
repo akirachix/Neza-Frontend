@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import NairobiMap from '../components/dynamicNairobiMap';
+import NairobiMap from '../components/DynamicNairobiMap';
 import SideBar from '../components/Sidebar';
 import GirlIcon from '@mui/icons-material/Girl';
 import PregnantWomanIcon from '@mui/icons-material/PregnantWoman';
