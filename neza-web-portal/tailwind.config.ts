@@ -23,7 +23,7 @@ const config: Config = {
           },
           'grey': {
             200: '#3A3A40',
-          },
+          },         
         }
       },
       fontSize: {
@@ -38,4 +38,5 @@ const config: Config = {
   },
   plugins: [],
 }
+
 export default config

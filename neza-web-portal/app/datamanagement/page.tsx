@@ -7,6 +7,12 @@ import UpdateFileModal from '../modals/UpdateFileModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+<<<<<<< HEAD
+import SideBar from '../components/Sidebar';
+
+
+const DataUpload: React.FC = () => {
+=======
 import useGetFiles from '../hooks/useGetFiles';
 import { uploadfile } from '../Utilities/utils';
 import FileHashModal from '../modals/FileHashModal';
@@ -14,6 +20,7 @@ import SideBar from '../components/Sidebar';
 function DataUpload() {
   const { files } = useGetFiles();
   const hashFiles = files.map((file) => file.file_hash);
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
   const [selectedFile, setSelectedFile] = useState<File>();
   const [uploadedFiles, setUploadedFiles] = useState<{ name: string; timestamp: string; }[]>([]);
   const [fileContents, setFileContents] = useState<string[]>([]);
@@ -146,11 +153,19 @@ function DataUpload() {
     <div className='flex'>
       <SideBar/>
     <div className="flex flex-col md:flex-row data-upload-container">
+<<<<<<< HEAD
+      <SideBar />
+      <div className="md-5  pl-[119px] upload-files md:w-1/2">
+        <h1 className="font-nunito font-semibold text-3xl sm:text-3xl md:text-4xl mt-[65px]">Data Management</h1>
+
+        <h2 className="font-bold text-2xl mt-[80px]">Selected Files</h2>
+=======
       <div className="md-5 pl-[119px] upload-files md:w-1/2">
         <h1 className="font-nunito font-semibold text-3xl sm:text-3xl md:text-4xl mt-[65px]">
           Data Management
         </h1>
         <h2 className="font-bold text-2xl mt-[80px]">Uploaded Files</h2>
+>>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
         <ol>
           {hashFiles.map((hash, index) => (
             <li key={index} className="flex items-center">
