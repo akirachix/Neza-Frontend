@@ -11,16 +11,33 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import Image from 'next/image';
 
 function Dashboard() {
+  function getTimeOfDay() {
+    const currentHour = new Date().getHours();
+    if (currentHour >= 5 && currentHour < 12) {
+      return 'Good morning';
+    } else if (currentHour >= 12 && currentHour < 17) {
+      return 'Good afternoon';
+    } else {
+      return 'Good evening';
+    }
+  }
+
   return (
-    <div className='flex ml-[10px]'>
+    <div className='flex'>
       <SideBar/>
-    <div className='flex ml-[30px] mt-[5px]'>
+      <div>
+        <h3 className='text-[23px] ml-[52%] text-green-800 font-bold mt-[7%] w-[180px]'>
+        <span className='greeting '>{getTimeOfDay()}</span>
+        </h3>
+      </div>
+    <div className='flex ml-[-5%] mt-[3%]'>
     <div className='flex mt-[5px]'>
       <div className='pt-5'>
-      <div className='flex space-x-40'>           
+      <div className='flex space-x-40'>   
+
       <div>
-        <h3 className='text-[23px] font-bold'>Children</h3>
-        <div className=" flex pt-[15%] space-x-5 mt-1 pl-[10%] w-[350px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+        <h3 className='text-[20px] font-bold'>Children</h3>
+        <div className=" flex pt-[14%] space-x-5 mt-1 pl-[10%] w-[350px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
           <div className='text-green-800 text-2xl '>
           <Image src="/girl.png" width={50} height={500} alt="logo" className="w-[70px]" />
           </div>
@@ -31,8 +48,8 @@ function Dashboard() {
         </div>
       </div>
       <div>
-        <h3 className='text-[23px] font-bold'>Pregnancies</h3>
-        <div className=" flex pt-[15%] space-x-5 mt-1 pl-[5%] w-[330px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+        <h3 className='text-[20px] font-bold'>Pregnancies</h3>
+        <div className=" flex pt-[14%] space-x-5 mt-1 pl-[5%] w-[330px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
           <div className='text-6xl text-green-800'>
           <Image src="/embryo.png" width={50} height={500} alt="logo" className="w-[70px]" />
           </div>
@@ -43,7 +60,7 @@ function Dashboard() {
         </div>
       </div>
       <div>
-        <h3 className='text-[22px] font-bold'>Variables considered</h3>
+        <h3 className='text-[20px] font-bold'>Variables considered</h3>
         <div className="flex mt-1 pl-[4%] space-x-10 w-[350px] h-[161px] bg-blue-200  p-[10px] rounded-[10px] text- text-[18px] font-normal font-['Nunito']">
           <div>
 
@@ -72,7 +89,7 @@ function Dashboard() {
 
      <div className="flex w-[400px] h-[27px] ">
 </div>
-      <div className="">
+      <div className="mt-[1%]">
         <NairobiMap />
       </div>
       </div>

@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 'use client'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-=======
-'use client';
-import React, { useState, ChangeEvent, FormEvent } from 'react';
->>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
 import Image from 'next/image';
 import Link from 'next/link';
 import useSignup from '../hooks/useSignup';
@@ -65,13 +60,8 @@ function Signup() {
   return (
     <div className="max-w-full bg-white flex gap-x-20">
       <Image
-<<<<<<< HEAD
       src="/one.jpeg"
       width={530}
-=======
-      src="/images/LOGO.png"
-      width={70}
->>>>>>> 4f75a6ff76d99496b3c961bfd2419401a9a45b90
       height={60}
       alt="logo"
       className='h-[100%]'/>
@@ -162,7 +152,6 @@ function Signup() {
           required
         />
       </div>
-      {/* {user && Object.values(user)? Object.values(user)[0]: user} */}
             <div className="">
               {showPopup && (
                 <p className={`text-${message.includes('Successful') ? 'green' : 'red'} text-xl font-normal font-['Nunito']`}>
