@@ -77,7 +77,7 @@ export default function NairobiMap() {
 
   return (
     <div>
-      <div style={{ height: '540px', width: '100%' }}>
+      <div style={{ height: '520px', width: '100%' }}>
         <MapContainer
           center={mapCenter}
           zoom={13}

@@ -32,7 +32,7 @@ const SideBar = () => {
   };
   const getNavItemClasses = (menu: MenuItem) => {
     return classNames(
-      "flex items-center cursor-pointer rounded w-full overflow-hidden whitespace-nowrap my-1 p-3 transition duration-300",
+      "flex items-center cursor-pointer rounded w-full overflow-hidden whitespace-nowrap my-1 p-7 transition duration-300",
       {
         "justify-center": toggleCollapse,
         "hover:text-green-500": !toggleCollapse && activeLink !== menu.link,
@@ -53,12 +53,12 @@ const SideBar = () => {
   };
   const handleLogoutConfirmation = ()=>{
   };
-  const sidebarClasses = classNames("h-screen w-[80px] mr-[1%]  pt-8 pb-4 bg-yellow-400 flex flex-col justify-between transition-all duration-300", {
+  const sidebarClasses = classNames("h-screen w-[100px] mr-[1%]  pt-8 pb-4 bg-yellow-400 flex flex-col justify-between transition-all duration-300", {
     "w-80": !toggleCollapse,
     "w-20": toggleCollapse,
     "items-center": toggleCollapse,
   });
-  const logoClasses = classNames(" mt-10 ml-1", {
+  const logoClasses = classNames(" mt-0 ml-1", {
     "mt-10": !toggleCollapse,
     "mx-auto": toggleCollapse,
     "mt-20": toggleCollapse,
@@ -78,7 +78,7 @@ const SideBar = () => {
           <Image
               src="/LOGO.png"
               alt="Logo"
-              width={toggleCollapse ? 45 : 90}
+              width={toggleCollapse ? 40 : 60}
               height={toggleCollapse ? 28 : 56}
               className='mt-10 ml-[-2%]'
             />
@@ -122,7 +122,7 @@ const SideBar = () => {
               >
                 <span className={classNames(exitIconClasses, { "text-yellow-500": activeLink === "/logOut" })}>
                   {React.cloneElement(<LogoutIcon />, {
-                    className: classNames("w-22 h-23 font-bold flex-shrink-0", {
+                    className: classNames("w-30 h-23 font-bold flex-shrink-0", {
                       "text-yellow-500": activeLink === "/logOut",
                     }),
                   })}
