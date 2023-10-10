@@ -1,0 +1,44 @@
+{
+    "name": "neza-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@fortawesome/free-solid-svg-icons": "^6.4.2",
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "@mui/icons-material": "^5.14.12",
+        "@types/react": "18.2.21",
+        "@types/react-dom": "18.2.7",
+        "autoprefixer": "10.4.15",
+        "chart.js": "^4.4.0",
+        "cookiejs": "^2.1.2",
+        "eslint": "8.48.0",
+        "eslint-config-next": "13.4.19",
+        "i18next": "^23.5.1",
+        "js-cookie": "^3.0.5",
+        "material-design-icons": "^3.0.1",
+        "next": "^13.5.2",
+        "papaparse": "^5.4.1",
+        "postcss": "8.4.29",
+        "react": "^18.2.0",
+        "react-chartjs-2": "^5.2.0",
+        "react-dom": "18.2.0",
+        "react-i18next": "^13.2.2",
+        "react-icons": "^4.11.0",
+        "react-leaflet": "^4.2.1",
+        "recharts": "^2.8.0",
+        "tailwindcss": "^3.3.3"
+    },
+    "devDependencies": {
+        "@types/js-cookie": "^3.0.4",
+        "@types/node": "20.8.2",
+        "typescript": "5.2.2"
+    }
+}

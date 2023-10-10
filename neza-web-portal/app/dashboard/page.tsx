@@ -4,12 +4,12 @@ import NairobiMap from '../atoms/map';
 import { FaSearch } from 'react-icons/fa';
 import SideBar from '../components/Sidebar';
 import Link from 'next/link';
-import Details from '../details/page';
+
 
 function Dashboard() {
   return (
     <div className='flex'>
-      <SideBar/>
+     
     <div className='flex'>
     <div className='flex ml-[40px] mt-[30px]'>
       <div className='pl-20 pt-10 '>
