@@ -1,50 +1,78 @@
-'use client'
-import React from 'react';
-import NairobiMap from '../atoms/map';
-import { FaSearch } from 'react-icons/fa';
+'use client';
+import React, { useState, useEffect } from 'react';
+import NairobiMap from '../components/DynamicNairobiMap';
 import SideBar from '../components/Sidebar';
-import Link from 'next/link';
-
+import GirlIcon from '@mui/icons-material/Girl';
+import PregnantWomanIcon from '@mui/icons-material/PregnantWoman';
+import FactoryIcon from '@mui/icons-material/Factory';
+import WaterDropIcon from '@mui/icons-material/WaterDrop';
+import CarRepairIcon from '@mui/icons-material/CarRepair';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import Image from 'next/image';
 
 function Dashboard() {
   return (
-    <div className='flex'>
-     
-    <div className='flex'>
-    <div className='flex ml-[40px] mt-[30px]'>
-      <div className='pl-20 pt-10 '>
-      <p className="text-black text-[40px] font-bold font-['Nunito']">Hello Bwiza</p>
-      <div className="text-black text-2xl font-normal font-['Nunito']">Areas with the highest levels of lead exposure</div>
-      <div className='flex space-x-40'>
-      <Link href='/details'>
-      <div className="mt-5 pl-20 w-[310px] h-[124px] pt-4 rounded-[10px] border-2 border-green-600 ">
-            <div className=" ml-5 text-black text-[26px] font-normal font-['Nunito']">Dandora</div>
-            <div className="text-green-600 text-[26px] font-normal font-['Nunito'] ml-10">60%</div>
+    <div className='flex ml-[10px]'>
+      <SideBar/>
+    <div className='flex ml-[90px] mt-[10px]'>
+    <div className='flex mt-[20px]'>
+      <div className='pt-10'>
+      <div className='flex space-x-40'>           
+      <div>
+        <h3 className='text-[23px] font-bold'>Children</h3>
+        <div className=" flex pt-[12%] space-x-5 mt-5 pl-[5%] w-[350px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+          <div className='text-green-800 text-2xl '>
+          <Image src="/girl.png" width={50} height={500} alt="logo" className="w-[70px]" />
+          </div>
+          <div className='text-black '>
+            <h3>No.of children at risk</h3>
+            <h1 className='text-[25px]'>154,651</h1>
+          </div>
+        </div>
       </div>
-      </Link>
-      <Link href='/details'>
-      <div className="ml-20 mt-5 pl-20 w-[310px] h-[124px] pt-4 rounded-[10px] border-2 border-green-600 ">
-            <div className=" ml-5 text-black text-[26px] font-normal font-['Nunito']">Kibra</div>
-            <div className="text-green-600 text-[26px] font-normal font-['Nunito'] ml-10">87%</div>
+      <div>
+        <h3 className='text-[23px] font-bold'>Pregnancies</h3>
+        <div className=" flex pt-[12%] space-x-5 mt-5 pl-[5%] w-[350px] h-[161px] bg-blue-200 pt-[2%] rounded-[10px]">
+          <div className='text-6xl text-green-800'>
+          <Image src="/embryo.png" width={50} height={500} alt="logo" className="w-[70px]" />
+          </div>
+          <div className='text-black '>
+            <h3>Pregancies at risk each month</h3>
+            <h1 className='text-[25px]'>7500</h1>
+          </div>
+        </div>
       </div>
-      </Link>
-      <div className="ml-20 mt-5 pl-20 w-[310px] h-[124px] pt-4 rounded-[10px] border-2 border-green-600 ">
-            <div className=" ml-5 text-black text-[26px] font-normal font-['Nunito']">Kasarani</div>
-            <div className="text-green-600 text-[26px] font-normal font-['Nunito'] ml-10">92%</div>
+      <div>
+        <h3 className='text-[22px] font-bold'>Variables considered</h3>
+        <div className="flex mt-5 pl-[4%] space-x-10 w-[360px] h-[161px] bg-blue-200  p-[10px] rounded-[10px] text- text-[18px] font-normal font-['Nunito']">
+          <div>
+
+          <div  className='text-green-800 flex m-[5px] space-x-3'>
+            <FactoryIcon/>
+            <p className='text-black'>No. of industries</p>
+          </div>
+          <div  className=' text-green-800 flex m-[5px] mt-[25px] space-x-3'>
+            <WaterDropIcon/>
+            <p className='text-black'>Source of water</p>
+          </div>
+          </div>
+          <div>
+          <div  className='text-green-800  flex m-[5px] space-x-3'>
+            <RemoveCircleOutlineIcon/>
+            <p className='text-black'>Open Sewage</p>
+          </div>
+          <div  className=' text-green-800 flex m-[5px] mt-[25px] space-x-3'>
+            <CarRepairIcon/>
+            <p className='text-black'>No. of Garages</p>
+          </div>
+        </div>
+        </div>
       </div>
       </div>
-     <div className="flex w-[653px] h-[57px] rounded-[10px] mt-10 border-2 border-black border-opacity-4">
-  <p className="mt-5 ml-5 text-green-500 font-3xl"><FaSearch /></p>
-  <input
-  type="email"
-  id="organizationEmail"
-  name="organizationEmail"
-  placeholder="Search by location"
-  className="text-[18px] ml-5 w-[650px] border-none pl-[10px]"
-  required
-/>
+
+     <div className="flex w-[653px] h-[57px] ">
 </div>
-      <div className="mt-1">
+      <div className="">
         <NairobiMap />
       </div>
       </div>
@@ -54,12 +82,3 @@ function Dashboard() {
   );
 }
 export default Dashboard;
-
-
-
-
-
-
-
-
-

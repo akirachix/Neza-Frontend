@@ -1,10 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
+import SideBar from '../components/Sidebar';
 
 
 function  Documentation () {
   return (
-    <div className="flex flex-col ml-10 mt-10 font-nunito ">
+    <div className='flex ml-[10px]'>
+      <SideBar/>
+<div className="flex flex-col ml-10 mt-10 font-nunito ">
       <div>
         <h1 className="mb-5 text-black  text-4xl ml-[500px]">How Tinylife Wellness Works</h1>
       </div>
@@ -37,6 +40,9 @@ The map highlights the different wards in Nairobi and their case details. The le
         </h4>
       </div>
     </div>
+
+    </div>
+    
   );
 };
 

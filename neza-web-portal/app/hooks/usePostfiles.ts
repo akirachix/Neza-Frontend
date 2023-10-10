@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { uploadfile } from '../Utilities/utils';
+import { uploadfile } from '../utilities/utils';
 interface FilesData {
     location: string;
     sources_of_water: number;

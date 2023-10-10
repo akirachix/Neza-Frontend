@@ -39,6 +39,7 @@
     "devDependencies": {
         "@types/js-cookie": "^3.0.4",
         "@types/node": "20.8.2",
+        "@types/papaparse": "^5.3.9",
         "typescript": "5.2.2"
     }
 }

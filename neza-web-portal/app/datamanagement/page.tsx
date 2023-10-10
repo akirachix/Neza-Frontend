@@ -7,9 +7,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import useGetFiles from '../hooks/useGetFiles';
-import { uploadfile } from '../Utilities/utils';
+import { uploadfile } from '../utilities/utils';
 import FileHashModal from '../modals/FileHashModal';
 import SideBar from '../components/Sidebar';
+import Papa from 'papaparse';
+
 function DataUpload() {
   const { files } = useGetFiles();
   const hashFiles = files.map((file) => file.file_hash);
@@ -142,7 +144,8 @@ function DataUpload() {
     setSelectedHash(hash);
   };
   return (
-    <div className='flex'>
+    <div className='flex ml-[10px]'>
+      <SideBar/>
      
     <div className="flex flex-col md:flex-row data-upload-container">
       <div className="md-5 pl-[119px] upload-files md:w-1/2">

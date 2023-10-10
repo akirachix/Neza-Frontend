@@ -1,22 +1,25 @@
-import { BASE_URL } from "@/config";
+import { BASE_URL } from "@/app/config";
+
 export async function POST(request: Request) {
   try {
-    if (!BASE_URL) {
+    if (!{BASE_URL}) {
       return new Response("Base URL not found", {
         status: 404,
         statusText: "Failed",
       });
     }
     const body = await request.json().then(response => response);
-    const result = await fetch(`https://nezabackend-2a2e9782ab7f.herokuapp.com/api/upload/`, {
+    const result = await fetch(`${BASE_URL}api/users/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     });
+
     const user = await result.json();
 console.log('users', user);
+
     return new Response(JSON.stringify(user), {
       status: 201,
       statusText: "Success",
