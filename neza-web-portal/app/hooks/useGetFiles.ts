@@ -1,4 +1,5 @@
-import { getFiles } from "../Utilities/utils";
+
+import { getFiles } from "../utilities/utils";
 import { useEffect, useState } from "react";
 interface FilesData {
   id: number;

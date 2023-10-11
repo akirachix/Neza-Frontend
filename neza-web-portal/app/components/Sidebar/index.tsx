@@ -19,7 +19,7 @@ const SideBar = () => {
   const menuItems: MenuItem[] = [
     { id: 1,  link: "/dashboard", icon: <DashboardIcon /> },
     { id: 2,  link: "/datamanagement", icon: <CloudUploadIcon /> },
-    { id: 3,  link: '/profile', icon: <DescriptionIcon /> },
+    { id: 3,  link: '/documentation', icon: <DescriptionIcon /> },
   ];
   const [toggleCollapse, setToggleCollapse] = useState(false);
   const [activeLink, setActiveLink] = useState("/");
@@ -146,10 +146,3 @@ const SideBar = () => {
   );
 };
 export default SideBar;
-
-
-
-
-
-
-

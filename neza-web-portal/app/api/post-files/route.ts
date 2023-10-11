@@ -1,4 +1,3 @@
-// / import { BASE_URL } from "@/config";
 import { BASE_URL } from "@/config";
 export async function POST(request: Request) {
   try {
