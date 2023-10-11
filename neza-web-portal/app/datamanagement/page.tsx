@@ -27,11 +27,11 @@ function DataUpload() {
   const [missingColumns, setMissingColumns] = useState<string[]>([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 20; 
+  const itemsPerPage = 10; 
 
   const totalFiles = files.length;
   const totalPages = Math.ceil(totalFiles / itemsPerPage);
-  const actualTotalPages = Math.min(totalPages, 2); 
+  const actualTotalPages = Math.min(totalPages, 1); 
 
 
   const startIndex = (currentPage - 1) * itemsPerPage;
