@@ -108,6 +108,9 @@ function DataUpload() {
             if (response.message === 'File uploaded and processed successfully') {
               setSuccessMessage(response.message);
               setErrorMessage('');
+            } else if (response.message === 'File contents already exist in the database') {
+              setErrorMessage(response.message);
+              setSuccessMessage('');
             } else {
               setErrorMessage(response.message);
               setSuccessMessage('');
@@ -193,7 +196,9 @@ function DataUpload() {
         </div>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        {successMessage && <p className="success-message text-align-center">{successMessage}</p>}
+        {successMessage && (
+          <p className="success-message text-align-center">{successMessage}</p>
+        )}
         
         <MissingColumnsModal
           isOpen={showMissingColumnsModal}
