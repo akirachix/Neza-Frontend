@@ -29,9 +29,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/signout/index.ts",
-    "app/signout/index.js",
-    "app/modals/SignOutPopUp/index.tsx"
-  ],
+    "app/signout/index.js"
+, "app/modals/SignOutPopUp/index.tsx", "app/StageTracking/index.tsx", "app/Faq/index.js"  ],
+  
   "exclude": ["node_modules"]
 }
 

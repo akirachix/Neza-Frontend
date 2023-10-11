@@ -1,43 +1,7 @@
-// import './globals.css'
-// import type { Metadata } from 'next'
-// import { Inter } from 'next/font/google'
-// import Nav from './components/layout'
-
-// const inter = Inter({ subsets: ['latin'] })
-// export const metadata: Metadata = {
-//   title: 'Tinylife wellness',
-//   description: 'Tinylife wellness user dashboard',
-// }
-// export default function RootLayout({
-
-//   children,
-// }: {
-
-//   children: React.ReactNode
-// }) {
-
-//   return (
-//     <html lang="en">
-
-//       <body className={inter.className}>
-//         <div className='flex'>
-//         <Nav children={undefined}/>
-//         {children}
-//         </div>
-
-//       </body>
-//     </html>
-//   )
-// }
-
-
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import SideBar from './components/Sidebar'
-import MyPage from './profile/page'
-import Details from './details'
-import DataUpload from './datamanagement/page'
 import Signup from './signup/page'
 
 
@@ -57,10 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className='flex'>
-     
-           <SideBar/>
-          
-          {children}  
+          {children} 
         </div>
       </body>
     </html>

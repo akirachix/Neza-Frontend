@@ -1,124 +1,155 @@
-'use client';
+'use client'
 import React, { useState, useEffect } from "react";
-import { CgMenu } from "react-icons/cg";
-import { RxDashboard, RxPerson, RxExit, RxAccessibility } from "react-icons/rx";
+import { RxDashboard, RxExit, RxPerson, RxPieChart } from "react-icons/rx";
 import Link from "next/link";
 import classNames from "classnames";
 import LogoutModal from "@/app/modals/SignOutPopUp";
-import useUserLogOut from "@/app/hooks/useUserLogout";
+import Image from "next/image";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import LogoutIcon from '@mui/icons-material/Logout';
+import DescriptionIcon from '@mui/icons-material/Description';
+import { CgMenu } from "react-icons/cg";
 type MenuItem = {
   id: number;
-  label: string;
   link: string;
   icon: JSX.Element;
 };
 const SideBar = () => {
-  const { handleUserLogOut } = useUserLogOut();
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const [activeLink, setActiveLink] = useState<string>("/"); 
-  const [expandedItem, setExpandedItem] = useState<number | null>(null);
   const menuItems: MenuItem[] = [
-    { id: 1, label: "Dashboard", link: "/", icon: <RxDashboard /> },
-    { id: 2, label: "Profile", link: "/profile", icon: <RxPerson /> },
-    { id: 3, label: "Data Management", link: "/datamanagement", icon: <RxAccessibility /> },
+    { id: 1,  link: "/dashboard", icon: <DashboardIcon /> },
+    { id: 2,  link: "/datamanagement", icon: <CloudUploadIcon /> },
+    { id: 3,  link: '/documentation', icon: <DescriptionIcon /> },
   ];
-  useEffect(() => {
-    const storedActiveLink = localStorage.getItem("activeLink");
-    if (storedActiveLink) {
-      setActiveLink(storedActiveLink);
-    }
-  }, []);
-  useEffect(() => {
-    localStorage.setItem("activeLink", activeLink);
-  }, [activeLink]);
-  const handleMenuItemClick = (link: string, itemId: number) => {
-    setActiveLink(link);
-    if (expandedItem === itemId) {
-      setExpandedItem(null);
-    } else {
-      setExpandedItem(itemId);
+  const [toggleCollapse, setToggleCollapse] = useState(false);
+  const [activeLink, setActiveLink] = useState("/");
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const handleActiveLink=(link:any)=>{
+    setActiveLink(link)
+  }
+  const handleSideBarToggle = () => {
+    setToggleCollapse(!toggleCollapse);
+  };
+  const getNavItemClasses = (menu: MenuItem) => {
+    return classNames(
+      "flex items-center cursor-pointer rounded w-full overflow-hidden whitespace-nowrap my-1 p-3 mt-9 transition duration-300",
+      {
+        "justify-center": toggleCollapse,
+        "hover:text-green-500": !toggleCollapse && activeLink !== menu.link,
+        "mr-2": toggleCollapse,
+        "text-green-500": activeLink === menu.link || (menu.link === "/" && activeLink === "/"),
+        "text-black": activeLink !== menu.link,
+      }
+    );
+  };
+  const handleMouseEnter = (menu: MenuItem) => {
+    if (toggleCollapse && menu.link) {
+      setActiveLink(menu.link);
     }
   };
-  const exitIconClasses = classNames("text-white text-xl");
-  const logoutTextClasses = "text-white text-lg font-semibold";
-  const handleLogoutConfirmation = () => {
-    setShowLogoutModal(true);
+  const handleMouseLeave = () => {
+    if (toggleCollapse) {
+    }
   };
+  const handleLogoutConfirmation = ()=>{
+  };
+  const sidebarClasses = classNames("h-screen w-[80px] ml-[4%]  pt-8 pb-4 bg-yellow-400 flex flex-col justify-between transition-all duration-300", {
+    "w-80": !toggleCollapse,
+    "w-20": toggleCollapse,
+    "items-center": toggleCollapse,
+  });
+  const logoClasses = classNames(" mt-10 ml-1", {
+    "mt-10": !toggleCollapse,
+    "mx-auto": toggleCollapse,
+    "mt-20": toggleCollapse,
+    "mb-13": toggleCollapse,
+    "ml-2": toggleCollapse,
+  });
+  const exitIconClasses = classNames("text-black text-2xl font-bold ", {
+    "ml-[-15px]": toggleCollapse,
+  });
+  const logoutTextClasses = "text-black text-lg font-semibold ";
   return (
-    <div className="h-screen w-20 bg-green-800 px-4 pt-8 pb-4 flex flex-col justify-between transition-all duration-300">
+    <div className={sidebarClasses}>
       <div className="flex flex-col pl-3">
         <div className="flex items-center justify-between relative">
           <div className="flex items-center pl-1 gap-4 flex-col">
-            <img
+            <Image
               src="/LOGO.png"
               alt="Logo"
-              width={45}
-              height={28}
-              className="mt-10 ml-1"
+              width={toggleCollapse ? 45 : 90}
+              height={toggleCollapse ? 28 : 56}
+              className={logoClasses}
             />
+            {!toggleCollapse && <div className="w-4" />}
           </div>
         </div>
-        <div className="flex flex-col items-start mt-10 text-white font-nunito">
-          {menuItems.map(({ id, label, link, icon }) => (
+        <div className="flex flex-col items-start mt-10 text-black font-nunito ">
+          {menuItems.map(({ id, link, icon }) => (
             <Link key={id} href={link}>
               <div
-                className={classNames(
-                  "flex items-center cursor-pointer rounded w-full overflow-hidden whitespace-nowrap my-1 p-3 mt-9 transition duration-300",
-                  {
-                    "text-yellow-500": activeLink === link,
-                    "text-white": activeLink !== link,
-                  }
-                )}
-                onClick={() => handleMenuItemClick(link, id)}
+                className={getNavItemClasses({ id, link, icon })}
+                onMouseEnter={() => handleMouseEnter( icon.props)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handleActiveLink(link)}
               >
                 <div className="mr-5">
                   {React.cloneElement(icon, {
                     className: classNames("w-22 h-23 font-bold flex-shrink-0", {
-                      "text-yellow-500": activeLink === link,
-                      "text-white": activeLink !== link,
+                      "": activeLink === link,
                     }),
                   })}
                 </div>
-                <span
-                  className={classNames("text-lg font-semibold", {
-                    'mr-2': expandedItem !== id, 
-                  })}
-                  style={{ opacity: activeLink === link || expandedItem === id ? 1 : 0 }}
-                >
-                  {label}
-                </span>
+                {!toggleCollapse && (
+                  <span className={classNames("text-lg font-semibold", {
+                    "": activeLink === link,
+                  })}>
+                    {}
+                  </span>
+                )}
               </div>
             </Link>
           ))}
-          <div className="ml-[-8px] mt-[-8px]">
-            <div
-              className="group flex items-center text-ml gap-5 font-medium p-2 hover:bg-hoverblue rounded-md mt-1 font-nunito"
-              onClick={handleLogoutConfirmation}
-            >
-              <span className={exitIconClasses}>
-                {React.cloneElement(<RxExit />, {
-                  className: "w-22 h-23 text-white font-bold flex-shrink-0 ml-[10px]",
-                })}
-              </span>
-              <span
-                className={classNames(logoutTextClasses, {
-                  'opacity-0': activeLink !== '/logOut',
-                })}
+          <div
+            className={getNavItemClasses({ id: 4, link: "/logOut", icon: <LogoutIcon /> })}
+            onClick={() => setShowLogoutPopup(true)}
+          >
+            <div className="ml-[-8px] mt-[-8px]">
+              <div
+                className={`group flex items-center text-ml gap-5 font-medium p-2 hover:bg-hoverblue rounded-md mt-1 font-nunito `}
+                onClick={handleLogoutConfirmation}
               >
-                Log Out
-              </span>
+                <span className={classNames(exitIconClasses, { "text-yellow-500": activeLink === "/logOut" })}>
+                  {React.cloneElement(<LogoutIcon />, {
+                    className: classNames("w-22 h-23 font-bold flex-shrink-0", {
+                      "text-yellow-500": activeLink === "/logOut",
+                    }),
+                  })}
+                </span>
+                {!toggleCollapse && (
+                  <h2 className={classNames(logoutTextClasses, { "text-green-500": activeLink === "/logOut" })}></h2>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {showLogoutModal && (
+      {showLogoutPopup && (
         <LogoutModal
-          isOpen={showLogoutModal}
-          onClose={() => setShowLogoutModal(false)}
-          onLogout={handleUserLogOut}
+          isOpen={showLogoutPopup}
+          onClose={() => setShowLogoutPopup(false)}
+          onLogout={handleLogoutConfirmation}
+          activeLink={activeLink}
         />
       )}
     </div>
   );
 };
 export default SideBar;
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState } from 'react';
 import Pagination from '@mui/material/Pagination';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,6 +9,7 @@ import MissingColumnsModal from '../modals/MissingColumnsModal';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import useGetFiles from '../hooks/useGetFiles';
 import { uploadfile } from '../utilities/utils';
+import SideBar from '../components/Sidebar';
 
 interface FileData {
   file_hash: string;
@@ -46,7 +48,6 @@ function DataUpload() {
     const file = e.target.files?.[0];
     if (file) {
       setSelectedFile(file);
-
       const timestamp = new Date().toLocaleString();
       const fileHash = MD5(file.name + uuidv4()).toString();
       setUploadedFiles([{ name: file.name, timestamp, file_hash: fileHash }, ...uploadedFiles]);
@@ -56,14 +57,12 @@ function DataUpload() {
       setSuccessMessage('');
     }
   };
-
   const handleUploadButtonClick = () => {
     const fileInput = document.getElementById('file-input');
     if (fileInput) {
       fileInput.click();
     }
   };
-
   const handleUpload = async () => {
     if (selectedFile) {
       if (selectedFile.type !== 'text/csv') {
@@ -132,8 +131,10 @@ function DataUpload() {
     setShowMissingColumnsModal(false);
     setMissingColumns([]);
   };
-
   return (
+    
+    <div className='flex ml-[10px]'>
+    <SideBar/>
     <div className="flex flex-col md:flex-row data-upload-container ml-[40px]">
       <div className="md:w-1/2 md:pl-[119px] upload-files">
         <h1 className="font-nunito font-semibold text-3xl sm:text-3xl md:text-4xl mt-[65px]">
@@ -205,6 +206,7 @@ function DataUpload() {
           missingColumns={missingColumns}
           onClose={handleMissingColumnsModalClose} />
       </div>
+    </div>
     </div>
   );
 }
