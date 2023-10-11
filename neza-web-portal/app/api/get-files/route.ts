@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN, BASE_URL } from "@/../config";
+import { ACCESS_TOKEN, BASE_URL } from "@/app/config";
 
 
 export async function GET() {

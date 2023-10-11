@@ -1,42 +1,10 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
-import useGetOrganizations from '../hooks/getOrganizations/useGetOrganizations';
 
 
 
-// const MyPage = () => {
-//   const { files } = useGetOrganizations();
 
-//   useEffect(() => {
-//     (async () => {
-//       const response = await useGetOrganizations();
-//       const data = await response.json();
-//       console.log(data); // You can do further processing with the data here
-//     })();
-//   }, []);
-
-//   return (
-//     <div>
-//       <h1>Organizations</h1>
-//       <ul>
-//         {files.map((org) => (
-//           <li key={org.id}>
-//             <h2>{ org.organizationName}</h2>
-//             <p>Stage Name: {org.stage_name}</p>
-//             <p>Start Date: {org.start_date}</p>
-
-//             <p>End Date: {org.end_date}</p>
-
-//             <p>Stage Description: {org.description}</p>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default MyPage;
 
 const Profile = () => {
   const initialFormData = {
@@ -139,7 +107,7 @@ const Profile = () => {
 
   return (
     <div className="flex bg-white">
-      <div className="m-auto ml-[40%]">
+      <div className="m-auto ml-40">
         <h1 className="text-3xl font-semibold mt-4 pl-20 text-black text-center">My Account</h1>
         <div className="max-w-md mx-auto justify-items-center">
           <div className="pl-20">

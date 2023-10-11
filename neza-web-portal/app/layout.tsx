@@ -57,10 +57,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className='flex'>
-         {/* <Details/>  */}
-        {/* <Signup/> */}
+     
            <SideBar/>
-           {/* <DataUpload/> */}
+          
           {children}  
         </div>
       </body>

@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-type FileContentModalProps = {
+interface FileContentModalProps {
   fileHash: string;
-  fileContents: string[];
   onClose: () => void;
-};
+}
 
-function FileContentModal({ fileHash, fileContents, onClose }: FileContentModalProps) {
+function FileContentModal({ fileHash, onClose }: FileContentModalProps) {
+  const [fileData, setFileData] = useState<any | null>(null); 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/getFileData?fileHash=${fileHash}`);
+        const data = await response.json();
+        setFileData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [fileHash]);
+
   return (
-    <div className="file-content-modal">
-      <h2>File Contents</h2>
-      <ul>
-        {fileContents.map((content, index) => (
-          <li key={index}>{content}</li>
-        ))}
-      </ul>
-      <button onClick={onClose}>Close</button>
+    <div className="modal">
+      <div className="modal-content">
+        <button onClick={onClose}>Close</button>
+        {fileData ? (
+          <pre>{JSON.stringify(fileData, null, 2)}</pre>
+        ) : (
+          <p>Loading data...</p>
+        )}
+      </div>
     </div>
   );
 }

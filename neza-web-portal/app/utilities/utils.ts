@@ -1,42 +1,36 @@
+// utils.js
 export const getFiles= async()=>{
-    const url = '/api/get-files';
-    try{
-        const response = await fetch(url);
-        const result = await response.json();
-        console.log({result});
-        
-        return result
-    }
-    catch(error:any){
-        return error.message
-    }
+  const url = '/api/get-files';
+  try{
+      const response = await fetch(url);
+      const result = await response.json();
+      console.log({result});
+      return result
+  }
+  catch(error:any){
+      return error.message
+  }
 }
 
 
 
-
 // utils.ts
-import axios from 'axios';
-
-export const uploadfile = async (file: File) => {
+export const uploadfile = async (file: string | Blob) => {
   try {
     const formData = new FormData();
     formData.append('file', file);
-
-    const response = await axios.post('https://nezabackend-2a2e9782ab7f.herokuapp.com/api/upload/', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+    const response = await fetch('/api/post-files', {
+      method: 'POST',
+      body: formData,
     });
 
-    return response.data;
+    if (!response.ok) {
+      throw new Error('File upload failed.');
+    }
+
+    const data = await response.json();
+    return data;
   } catch (error) {
     throw new Error('File upload failed.');
   }
 };
-
-
-
-
-
-

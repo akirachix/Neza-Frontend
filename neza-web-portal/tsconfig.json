@@ -1,11 +1,5 @@
 {
   "compilerOptions": {
-    // "baseUrl": "./",
-    // "paths": {
-    //   "@/config": ["src/config"]
-    // }
-
-
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -26,7 +20,8 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "downlevelIteration": true // Add this line
   },
   "include": [
     "next-env.d.ts",
@@ -34,9 +29,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/signout/index.ts",
-    "app/signout/index.js"
-, "app/modals/SignOutPopUp/index.tsx"  ],
-  
+    "app/signout/index.js",
+    "app/modals/SignOutPopUp/index.tsx"
+  ],
   "exclude": ["node_modules"]
 }
+
 
