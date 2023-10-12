@@ -1,5 +1,6 @@
-import { getFiles } from "../Utilities/utils";
+import { getFiles } from "../utilities/utils";
 import { useEffect, useState } from "react";
+
 interface FilesData {
   id: number;
   location: string;
@@ -11,7 +12,6 @@ interface FilesData {
   past_cases_of_lead_poisoning: number;
   women_and_children_population: number;
   file_hash: string;
-    // lead_blood_levels:string,
 }
 const useGetFiles = () => {
   const [files, setFiles] = useState<FilesData[]>([]);

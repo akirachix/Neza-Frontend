@@ -62,28 +62,6 @@ export const loginUser = async (loginData: LoginData) => {
   }
 };
 
-
-
-interface MapData {
-prediction: string;
-}
-export const getLocations = async (prediction : MapData) => {
-  const url = `https://4912-2c0f-fe38-2240-3ea6-b2b8-fa3b-89ad-7933.ngrok-free.app/api`
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(prediction),
-    });
-    const result = await response.json();
-    return result;
-  } catch (error: any) {
-    return error.message;
-  }
-};
-
 interface FilesData {
 location: string;
 sources_of_water: number;
@@ -108,9 +86,6 @@ export const getStageTracking= async()=>{
   }
 }
 
-
-
-// utils.js
 export const getFiles= async()=>{
 const url = '/api/get-files';
 try{
@@ -128,7 +103,7 @@ export const uploadfile = async (file: string | Blob) => {
 try {
   const formData = new FormData();
   formData.append('file', file);
-  const response = await fetch('https://nezabackend-2a2e9782ab7f.herokuapp.com/api/upload/', {
+  const response = await fetch('api/upload/', {
     method: 'POST',
     body: formData,
   });
@@ -140,4 +115,15 @@ try {
 } catch (error) {
   throw new Error('File upload failed.');
 }
+};
+
+export const getLocations = async () => {
+    const url = `api/location-data/`
+    try {
+      const response = await fetch(url)
+      const result = await response.json();
+      return result;
+    } catch (error: any) {
+      return error.message;
+    }
 };
