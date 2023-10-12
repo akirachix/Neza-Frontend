@@ -11,4 +11,3 @@ const useUserLogOut = () => {
   return { handleUserLogOut };
 };
 export default useUserLogOut;
-
