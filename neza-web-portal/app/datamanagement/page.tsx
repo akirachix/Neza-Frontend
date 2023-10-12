@@ -163,7 +163,7 @@ function DataUpload() {
       </div>
 
       <div className="main-content w-full md:w-[20%]">
-        <div className="mt-[200px] ml-30 upload-header ">
+        <div className="mt-[185px] ml-30 upload-header ">
           <h1 className="font-bold text-2xl">Upload Files</h1>
           <p>Only Uploaded csv files with columns such as Location, Sources of water, Proximity to industries, Number of garages in an area, Proximity to dumpsite, Presence of open sewage, and Past cases of lead poisoning are accepted.</p>
           <div className="container-for-button-container ">
