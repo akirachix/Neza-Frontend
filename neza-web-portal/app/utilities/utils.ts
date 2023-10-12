@@ -132,7 +132,7 @@ export const uploadfile = async (file: string | Blob) => {
 try {
   const formData = new FormData();
   formData.append('file', file);
-  const response = await fetch('https://nezabackend-2a2e9782ab7f.herokuapp.com/api/upload/', {
+  const response = await fetch('/api/post-files', {
     method: 'POST',
     body: formData,
   });

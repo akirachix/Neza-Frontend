@@ -20,7 +20,8 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "downlevelIteration": true // Add this line
   },
   "include": [
     "next-env.d.ts",
@@ -33,4 +34,5 @@
   
   "exclude": ["node_modules"]
 }
+
 

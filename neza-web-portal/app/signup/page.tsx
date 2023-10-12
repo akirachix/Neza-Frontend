@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useSignup from '../hooks/useSignup';
-
 function Signup() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
