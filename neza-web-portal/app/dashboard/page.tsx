@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import NairobiMap from '../components/dynamicNairobiMap';
+// import NairobiMap from '../atoms/map';
+import NairobiMap from '../components/DynamicNairobiMap';
 import SideBar from '../components/Sidebar';
 import FactoryIcon from '@mui/icons-material/Factory';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
@@ -32,10 +33,9 @@ function Dashboard() {
     <div className='flex mt-[5px]'>
       <div className='pt-5'>
       <div className='flex space-x-40'>   
-
       <div>
         <h3 className='text-[20px]'>Children</h3>
-        <div className=" flex pt-[14%] space-x-5 mt-1 pl-[1%] w-[350px] h-[161px] bg-blue-200 pt-[2%] font-normal text-[18px] font-['Nunito'] rounded-[10px]">
+        <div className=" flex pt-[13%] space-x-5 mt-1 pl-[1%] w-[350px] h-[161px] bg-blue-200 pt-[2%] font-normal text-[18px] font-['Nunito'] rounded-[10px]">
           <div className='text-green-800 text-2xl '>
           <Image src="/girl.png" width={50} height={500} alt="logo" className="w-[70px]" />
           </div>
@@ -47,7 +47,7 @@ function Dashboard() {
       </div>
       <div>
         <h3 className='text-[20px]'>Pregnancies</h3>
-        <div className=" flex text pt-[14%] space-x-2 mt-1 pl-[5%] w-[350px] h-[161px] bg-blue-200 pt-[2%] font-normal text-[18px] font-['Nunito'] rounded-[10px]">
+        <div className=" flex text pt-[13%] space-x-2 mt-1 pl-[5%] w-[350px] h-[161px] bg-blue-200 pt-[2%] font-normal text-[18px] font-['Nunito'] rounded-[10px]">
           <div className='text-6xl text-green-800'>
           <Image src="/embryo.png" width={50} height={500} alt="logo" className="w-[70px]" />
           </div>

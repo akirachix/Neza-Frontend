@@ -20,7 +20,8 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "downlevelIteration": true // Add this line
   },
   "include": [
     "next-env.d.ts",
@@ -29,8 +30,9 @@
     ".next/types/**/*.ts",
     "app/signout/index.ts",
     "app/signout/index.js"
-, "app/modals/SignOutPopUp/index.tsx", "app/StageTracking/index.tsx", "app/api/location-data"  ],
+, "app/modals/SignOutPopUp/index.tsx", "app/StageTracking/index.tsx", "app/api/location-data", "app/api/location-datass"  ],
   
   "exclude": ["node_modules"]
 }
+
 

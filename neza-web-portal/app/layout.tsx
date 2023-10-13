@@ -19,7 +19,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className='flex'>
-          {/* <Signup/> */}
           {children} 
         </div>
       </body>

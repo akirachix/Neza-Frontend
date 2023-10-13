@@ -41,7 +41,9 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.2",
     "@types/leaflet": "^1.9.4",
-    "@types/papaparse": "^5.3.9"
+    "@types/papaparse": "^5.3.9",
+    "@types/uuid": "^9.0.5"
   }
 }

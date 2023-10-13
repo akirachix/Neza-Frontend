@@ -17,7 +17,7 @@ function Login() {
     password: password,
   });
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleLoginUser = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ function Login() {
 
     if (user) {
       setMessage('Login Successful!');
-      router.push('/dashboard')
+      router.push('/dashboard');
     } else {
       setMessage('Login failed. Please check your credentials');
     }
@@ -40,73 +40,75 @@ function Login() {
   console.log(user);
 
   return (
-    <div className="max-w-full bg-white flex gap-x-20"> <Image
-    src="/one.jpeg"
-    width={530}
-    height={60}
-    alt="logo"
-    className='h-[100%]'/>
-    <div className="max-w-full w-auto h-auto mt-10 ml-10 bg-white">
-      <div className="flex gap-x-20">
-        <div>
-          <div className="text-black text-[43px] font-['Nunito']">Sign In</div>
-          <form className="mt-10 ml-2 w-max text-[20px] font-['Nunito']" onSubmit={handleLoginUser}>
-            <div className="mb-4">
-              <label htmlFor="username" className="block text-gray-700 mb-2  font-nunito">
-                Enter Username:
-              </label>
-              <input
-          type="text"
-          id="username"
-          name="username"
-          className= "w-[583px] h-[57px] rounded-[10px] border-2 border-black border-opacity-30"
-          value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-        />
-            </div>
-            <div className="mb-10 mt-10">
-              <label htmlFor="password" className="block text-gray-700 mb-2 font-nunito">
-                Enter Password:
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                className= "w-[583px] h-[57px] rounded-[10px] border-2 border-black border-opacity-30"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div className="">
-              {showPopup && (
-                <p className={`text-${message.includes('Successful') ? 'green' : 'red'} text-xl ml-[14%] font-normal font-['Nunito']`}>
-                  {message}
-                </p>
-              )}
-              <button
-                type="submit"
-                className="bg-green-500 text-white px-4 py-3 mt-10 mb-5 rounded-md mt-2 pr-5 font-nunito"
-                style={{
-                  width: '200px',
-                  height: '70px',
-                  borderRadius: '10px',
-                  background: '#2DCD1F',
-                }}
-              >
-                Sign In
-              </button>
-              <Link href="/signup">
-                <p className="text-black text-xl font-normal font-['Nunito']">
-                  Don't have an account? <span className="text-green-400">Sign Up</span>
-                </p>
-              </Link>
-            </div>
-          </form>
+    <div className="max-w-full bg-white flex gap-x-20">
+      <Image
+        src="/one.jpeg"
+        width={530}
+        height={60}
+        alt="logo"
+        className='h-[100%]'
+      />
+      <div className="max-w-full w-auto h-auto mt-10 ml-10 bg-white">
+        <div className="flex gap-x-20">
+          <div>
+            <div className="text-black text-[43px] font-['Nunito']">Sign In</div>
+            <form className="mt-10 ml-2 w-max text-[20px] font-['Nunito']" onSubmit={handleLoginUser}>
+              <div className="mb-4">
+                <label htmlFor="username" className="block text-gray-700 mb-2  font-nunito">
+                  Enter Username:
+                </label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  className= "w-[583px] h-[57px] pl-5 rounded-[10px] border-2 border-black border-opacity-30"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="mb-10 mt-10">
+                <label htmlFor="password" className="block text-gray-700 mb-2 font-nunito">
+                  Enter Password:
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  className= "w-[583px] h-[57px] pl-5 rounded-[10px] border-2 border-black border-opacity-30"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="">
+                {showPopup && (
+                  <p className={`text-${message.includes('Successful') ? 'green' : 'red'} text-xl ml-[14%] font-normal font-['Nunito']`}>
+                    {message}
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  className="bg-green-500 text-white px-4 py-3 mt-10 mb-5 rounded-md mt-2 pr-5 font-nunito"
+                  style={{
+                    width: '200px',
+                    height: '70px',
+                    borderRadius: '10px',
+                    background: '#2DCD1F',
+                  }}
+                >
+                  Sign In
+                </button>
+                <Link href="/signup">
+                  <p className="text-black text-xl font-normal font-['Nunito']">
+                    Don&apos;t have an account? <span className="text-green-400">Sign Up</span>
+                  </p>
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
