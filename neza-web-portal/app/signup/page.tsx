@@ -1,16 +1,16 @@
 'use client'
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useSignup from '../hooks/useSignup';
+
 function Signup() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [orgType, setOrgType] = useState('');
   const [website, setWebsite] = useState('');
-  const [phone_number, setPhonenumber] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const { user, handleSignup } = useSignup({
     username: username,
@@ -21,14 +21,11 @@ function Signup() {
     phone_number: phone_number,
   });
 
-  const router = useRouter();
   const [message, setMessage] = useState('');
 
-
-
-  const handleCreateUser = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCreateUser = async (e: React.FormEvent<HTMLFormElement>) => { 
     e.preventDefault();
-  
+
     if (!username || !email || !password || !orgType || !website || !phone_number) {
       console.error("please fill all the fields");
       return;
@@ -36,15 +33,12 @@ function Signup() {
   
     try {
       const response: any = await handleSignup();
-  
+
       if (response && response.error) {
         console.error('Error during signup:', response.error);
         setMessage('Sign-up failed. Please check your details.');
-      } 
-      else {
+      } else {
         setMessage('Sign-up Successful!');
-        router.push('/login');
-
         setTimeout(() => {
           setShowPopup(false);
           setMessage('');
@@ -147,7 +141,7 @@ function Signup() {
           name="phone_number"
           className= "w-[583px] h-[57px] rounded-[10px] border-2 border-black  border-opacity-30"
           value = {phone_number}
-          onChange={(e) => setPhonenumber(e.target.value)}
+          onChange={(e) => setPhoneNumber(e.target.value)}
           required
         />
       </div>

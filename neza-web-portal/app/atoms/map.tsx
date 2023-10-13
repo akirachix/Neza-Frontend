@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { fetchLocationData, fetchPercentageData } from '../hooks/useLocations';
+import { LatLngBoundsLiteral, LatLngTuple } from 'leaflet';
+import { useFetchLocationData} from '../hooks/useLocations';
+import { useFetchPercentageData } from '../hooks/usePercentagedata';
 
-function LocationMarker({ location }) {
+function LocationMarker({ location }: { location: { lat: number, lng: number, name: string, Percentage: string } }) {
   const greenIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/leaf/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
@@ -27,62 +29,31 @@ function LocationMarker({ location }) {
 }
 
 export default function NairobiMap() {
-  const [leadPoisoningLocations, setLeadPoisoningLocations] = useState([]);
+  const { locationData, fetchData: fetchLocationData } = useFetchLocationData();
+  const { percentageData, fetchData: fetchPercentageData } = useFetchPercentageData();
 
-  const mapCenter = [-1.286389, 36.817223];
-  const nairobiBounds = [
+  const leadPoisoningLocations = locationData 
+  
+  const mapCenter: LatLngTuple = [-1.286389, 36.817223];
+  const nairobiBounds: LatLngBoundsLiteral = [
     [-1.4642, 36.6544],
     [-1.1595, 37.0811],
   ];
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const locationData = await fetchLocationData();
-        console.log('Location data length:', locationData.length);
-
-        const locationsWithPercentage = locationData.map((location) => ({
-          ...location,
-          Percentage: '',
-        }));
-
-        const percentageData = await fetchPercentageData();
-        console.log('Percentage data:', percentageData);
-
-        if (Array.isArray(percentageData.prediction)) {
-          if (locationData.length !== percentageData.prediction.length) {
-            console.error('Error: Percentage data length does not match location data length.');
-            return;
-          }
-
-          const updatedLocations = locationsWithPercentage.map((location, index) => {
-            const percentageValue = percentageData.prediction[index];
-            const updatedLocation = {
-              ...location,
-              Percentage: percentageValue.toString(),
-            };
-            return updatedLocation;
-          });
-          setLeadPoisoningLocations(updatedLocations);
-        } else {
-          console.error('Error: Percentage data is not an array.');
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchData();
-  }, []);
-
+  if (!locationData) {
+    console.error('Error fetching location data:', locationData);
+  }
+  if (!percentageData) {
+    console.error('Error fetching percentage data:', percentageData);
+  }
   return (
     <div>
-      <div style={{ height: '600px', width: '100%' }}>
+      <div style={{ height: '580px', width: '100%' }}>
         <MapContainer
           center={mapCenter}
           zoom={13}
           style={{ height: '100%', width: '100%' }}
-          maxBounds={nairobiBounds}
+          bounds={nairobiBounds}
           minZoom={10}
           maxZoom={30}
         >
@@ -93,9 +64,8 @@ export default function NairobiMap() {
           <Marker position={mapCenter}>
             <Popup>Nairobi, Kenya</Popup>
           </Marker>
-          {leadPoisoningLocations.map((location, index) => (
-            <LocationMarker key={index} location={location} />
-          ))}
+          leadPoisoningLocations((location: any, index: React.Key | null | undefined) = (
+          ))
         </MapContainer>
       </div>
     </div>

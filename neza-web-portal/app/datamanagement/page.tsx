@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState } from 'react';
 import Pagination from '@mui/material/Pagination';
 import { v4 as uuidv4 } from 'uuid';
@@ -154,7 +153,6 @@ function DataUpload() {
         </ol>
         <Pagination
         count={actualTotalPages}
-          // count={totalPages}
           page={currentPage}
           onChange={handlePageChange}
           color="primary"

@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@mui/icons-material": "^5.14.12",
+    "@mui/material": "^5.14.12",
+    "crypto-js": "^4.1.1",
+    "uuid": "^9.0.1"
+  }
+}
