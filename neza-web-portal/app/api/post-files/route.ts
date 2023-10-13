@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/app/config";
+import { BASE_URL } from "@/config";
 
 export async function POST(request: Request) {
   try {
